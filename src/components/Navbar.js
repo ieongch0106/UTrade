@@ -4,6 +4,7 @@ import './Navbar.css'
 export default function Navbar() {
   return (
     <nav className='nav'>
+        
         <ul>
             <li>
                 <a href='/Home'>Home</a>

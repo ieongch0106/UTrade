@@ -1,7 +1,16 @@
-import React from 'react'
+import React from 'react';
+import UTrade from '../images/UTrade.png';
 
-export default function home() {
+const UTradeStyle = {
+  'backgroundColor': 'maroon',
+  'display': 'flex',
+  'justify-content': 'center',
+};
+
+export default function Home() {
   return (
-    <div>This is home</div>
+    <div style={UTradeStyle}>
+      <img src={UTrade} alt='UTrade' width={'20%'}/>
+    </div>
   )
 }

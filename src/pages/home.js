@@ -1,41 +1,44 @@
 import React from 'react';
-import UTrade from '../images/UTrade.png';
+import UTrade from '../images/UTrade Transparent.png';
+import logo from '../images/logo.png';
 import './home.css'
-import Button from '../components/Button';
+import { useNavigate } from "react-router-dom";
 
-const UTradeStyle = {
-  'backgroundColor': 'maroon',
+const divlogo = {
+  'backgroundColor': 'black',
   'display': 'flex',
   'justify-content': 'center',
 };
 
-export default function Home() {
+export default function Home(props) {
+  const navigate = useNavigate();
+
   return (
     (
-      <div>
-        <div style={UTradeStyle}>
-          <img src={UTrade} alt='UTrade' width={'20%'}/>
+      <>
+        <div style={divlogo}>
+          <img src={logo} alt='UTrade' width={'125px'} onClick={() => navigate("/")} />
         </div>
-        <div className='welcome_to_utrade'>
-          <h1>Welcome to UTrade</h1>
-        </div>
-        <div className='home_text'>
-          <p>
+        <div className='container'>
+          <div style={{display: 'flex' ,justifyContent: 'center'}}>
+            <h1>Welcome to <img src={UTrade} alt='UTrade' width={'125px'} onClick={() => navigate("/")} /></h1>
+          </div>
+          <div style={{textAlign: 'center'}}>
             UTrade is a web application that allows you to buy and sell items online.
-            <br></br>
+            <br />
             You can search for items you want to buy or sell, and then you can contact the seller to make a deal.
-            <br></br>
             More random things
-            <br></br>
+            <br />
             More random things
-            <br></br>
+            <br />
             More random things
-          </p>
-        </div>
-        <Button>Buy Here</Button>
-      </div>
-    
-    
+          </div>
+          </div>
+          <div className='home-page'>
+            <button>Buy Here</button>
+            <button>Sell Here</button>
+          </div>
+      </>
     )
   )
 }

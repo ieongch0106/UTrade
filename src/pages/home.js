@@ -32,6 +32,7 @@ export default function Home() {
             More random things
           </p>
         </div>
+        <Button>Buy Here</Button>
       </div>
     
     

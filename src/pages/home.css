@@ -1,14 +1,18 @@
-.welcome_to_utrade{
-    /* display: flex; */
-    /* justify-content: center; */
-    font-weight: bold;
-    padding-left: 1rem;
+.container {
+    width: 100%;
+    padding-right: var(--bs-gutter-x, 0.75rem);
+    padding-left: var(--bs-gutter-x, 0.75rem);
+    margin-right: auto;
+    margin-left: auto;
 }
 
-.home_text{
+.big {
+    /* color: maroon; */
+    text-align: center;
+    font-weight: bold;
+}
+
+.home-text{
     font-size: 1.5rem;
-    /* font-weight: bold; */
-    color: #00bcd4;
-    margin-left: 1rem;
-    width: 50%;
+    padding: 5rem;
 }

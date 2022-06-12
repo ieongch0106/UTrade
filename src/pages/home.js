@@ -37,9 +37,5 @@ export default function Home() {
     
     
     )
-    
-    
-    
-   
   )
 }

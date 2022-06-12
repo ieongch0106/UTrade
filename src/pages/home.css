@@ -16,3 +16,30 @@
     font-size: 1.5rem;
     padding: 5rem;
 }
+
+.home_page{
+    background-color: #f5f5f5;
+    padding: 5rem;
+}
+
+.buying_button{
+    background-color: rgba(128, 0, 21, 0.928);
+    color: white;
+    font-size: x-large;
+    /* display: flex; */
+    /* box-sizing: border-box; */
+    height: 5rem;
+    width: 20rem;
+    padding: 0 25px;
+    margin-right:30rem;
+}
+
+.selling_button{
+    background-color: rgba(128, 0, 21, 0.928);
+    color: white;
+    font-size: x-large;
+    height: 5rem;
+    width: 20rem;
+    padding: 0 25px;
+    margin-left:10px;
+}

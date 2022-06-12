@@ -4,7 +4,6 @@ import './Navbar.css'
 export default function Navbar() {
   return (
     <nav className='nav'>
-        
         <ul>
             <li>
                 <a href='/'>Home</a>
@@ -17,6 +16,11 @@ export default function Navbar() {
             </li>
             <li>
                 <a href='/About'>Who We Are</a>
+            </li>
+        </ul>
+        <ul>
+            <li className='sign_in'>
+                <a href='/SignIn'>Sign In</a>
             </li>
         </ul>
     </nav>

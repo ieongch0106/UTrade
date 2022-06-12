@@ -17,7 +17,9 @@ export default function Home(props) {
     (
       <>
         <div style={divlogo}>
-          <img src={logo} alt='UTrade' width={'125px'} onClick={() => navigate("/")} />
+          <a href='/'>
+            <img src={logo} alt='UTrade' width={'125px'} onClick={() => navigate("/")} />
+          </a>  
         </div>
         <div className='container'>
           <div style={{display: 'flex' ,justifyContent: 'center'}}>
@@ -33,11 +35,21 @@ export default function Home(props) {
             <br />
             More random things
           </div>
-          </div>
-          <div className='home-page'>
-            <button>Buy Here</button>
-            <button>Sell Here</button>
-          </div>
+        </div>
+        <div className='home_page'>
+          <button className='buying_button'>Buy Here</button>
+          {/* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; */}
+          <button className='selling_button'>Sell Here</button>
+          {/* <p>hello world</p> */}
+        </div>
+        <div>
+          {/* <p>hello world</p> */}
+        </div>
       </>
     )
   )

@@ -1,19 +1,22 @@
-.nav {
+nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    /* background-color: aquamarine; */
 }
 
-.nav ul {
+nav ul {
     gap: 20px;
     display: flex;
     list-style: none;
 }
 
-.nav a {
+nav a {
     color: black;
     text-decoration: none;
+}
+
+nav a:hover, nav a:focus {
+    text-decoration: underline;
 }
 
 .sign_in{

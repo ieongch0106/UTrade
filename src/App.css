@@ -9,8 +9,18 @@ body {
   margin: 0;
 }
 
-img {
-  cursor: pointer;
+a {
+  color: maroon;
+}
+
+input {
+  margin: 10px;
+  height: 7%;
+  width: 20rem;
+}
+
+input::placeholder {
+  
 }
 
 button {

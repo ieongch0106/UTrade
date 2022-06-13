@@ -1,9 +1,8 @@
 import React from 'react';
 import UTrade from '../images/UTrade Transparent.png';
 import logo from '../images/UTrade.png';
-import background from '../images/background.png';
 import './home.css'
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const divlogo = {
   'backgroundColor': 'maroon',
@@ -12,17 +11,16 @@ const divlogo = {
 };
 
 export default function Home() {
-  const navigate = useNavigate();
 
   return (
       <>
-        <div className='home-container' style={{backgroundImage : `url(${background})`}}>
+        <div className='home-container'>
           <div style={divlogo}>
-              <img src={logo} alt='UTrade' width={'125px'} onClick={() => navigate("/")} />
+              <Link to='/'><img src={logo} alt='UTrade' width={'125px'} /></Link>
           </div>
           <div>
             <div style={{display: 'flex' ,justifyContent: 'center'}}>
-              <h1>Welcome to <img src={UTrade} alt='UTrade' width={'125px'} onClick={() => navigate("/")} /></h1>
+              <h1>Welcome to <Link to='/'><img src={UTrade} alt='UTrade' width={'125px'} /></Link></h1>
             </div>
             <div style={{textAlign: 'center'}}>
               <span style={{backgroundColor: 'black', color: 'white'}}>
@@ -37,8 +35,8 @@ export default function Home() {
               </span>
             </div>
           <div className='home-page'>
-            <button>Buy Here</button>
-            <button>Sell Here</button>
+            <Link to="/buy"><button>Buy Here</button></Link>
+            <Link to="/sell"><button>Sell Here</button></Link>
           </div>
           </div>
         </div>

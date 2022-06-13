@@ -22,7 +22,7 @@ export default function Navbar() {
         </ul>
         <ul>
             <li className='sign_in'>
-                <NavLink to='/SignIn'>Sign In</NavLink>
+                <NavLink to='/login'>Sign In</NavLink>
             </li>
         </ul>
     </nav>

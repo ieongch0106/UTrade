@@ -14,13 +14,15 @@ a {
 }
 
 input {
+  padding-left: 5px;
+  font-size: medium;
   margin: 10px;
   height: 7%;
   width: 20rem;
 }
 
 input::placeholder {
-  
+  font-size: medium;
 }
 
 button {
@@ -31,8 +33,31 @@ button {
   height: 5rem;
   width: 20rem;
   padding: 0 25px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
 button:hover, button:focus {
   background-color: rgb(99, 1, 18);
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav ul {
+  gap: 20px;
+  display: flex;
+  list-style: none;
+}
+
+nav a {
+  color: black;
+  text-decoration: none;
+}
+
+nav a:hover  {
+  color: maroon;
+  text-decoration: underline;
 }

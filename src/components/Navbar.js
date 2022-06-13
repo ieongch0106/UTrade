@@ -1,6 +1,5 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
-import './Navbar.css'
 
 export default function Navbar() {
 
@@ -21,7 +20,7 @@ export default function Navbar() {
             </li>
         </ul>
         <ul>
-            <li className='sign_in'>
+            <li style={{display: 'flex', paddingRight: '20px'}}>
                 <NavLink to='/login'>Sign In</NavLink>
             </li>
         </ul>

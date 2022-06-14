@@ -1,13 +1,14 @@
 import React from 'react';
 import UTrade from '../images/UTrade Transparent.png';
 import logo from '../images/UTrade.png';
+import { Button } from '../components/Components'
 import './home.css'
 import { Link } from "react-router-dom";
 
 const divlogo = {
   'backgroundColor': 'maroon',
   'display': 'flex',
-  'justify-content': 'center',
+  'justifyContent': 'center',
 };
 
 export default function Home() {
@@ -35,8 +36,12 @@ export default function Home() {
               </span>
             </div>
           <div className='home-page'>
-            <Link to="/buy"><button>Buy Here</button></Link>
-            <Link to="/sell"><button>Sell Here</button></Link>
+            <Link to="/buy">
+              <Button size='lg' value='Buy Here'></Button>
+            </Link>
+            <Link to="/sell">
+              <Button size='lg' value='Sell Here'></Button>
+            </Link>
           </div>
           </div>
         </div>

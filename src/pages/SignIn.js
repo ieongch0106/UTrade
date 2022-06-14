@@ -1,5 +1,5 @@
 import React from 'react'
-import Form from '../components/Form';
+import { Button, Form } from '../components/Components'
 import { Link } from "react-router-dom";
 
 export default function SignIn() {
@@ -22,14 +22,14 @@ export default function SignIn() {
         <input type="text" name="password" placeholder='Enter password'></input>
         <br /><br />
       </label>
-      <button type="submit">Sign in</button>
+      <Button type="submit" size="md" value="Sign in"></Button>
       <div>{link}</div>
     </>
   )
 
   return (
     <>
-      <Form name="Sign in" content={content}></Form>
+      <Form name="Sign in" content={content} width='30vw'></Form>
     </>
   )
 }

@@ -29,10 +29,6 @@ button {
   cursor: pointer;
   background-color: rgba(128, 0, 21, 0.928);
   color: white;
-  font-size: x-large;
-  height: 5rem;
-  width: 20rem;
-  padding: 0 25px;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 

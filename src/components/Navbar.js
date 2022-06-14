@@ -10,13 +10,13 @@ export default function Navbar() {
                 <NavLink to='/'>Home</NavLink>
             </li>
             <li>
-                <NavLink to='/Buy'>Buy</NavLink>
+                <NavLink to='/buy'>Buy</NavLink>
             </li>
             <li>
-                <NavLink to='/Sell'>Sell</NavLink>
+                <NavLink to='/sell'>Sell</NavLink>
             </li>
             <li>
-                <NavLink to='/About'>Who We Are</NavLink>
+                <NavLink to='/about'>Who We Are</NavLink>
             </li>
         </ul>
         <ul>

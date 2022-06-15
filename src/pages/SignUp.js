@@ -33,6 +33,6 @@ export default function SignIn() {
   )
 
   return (
-      <Form name="Sign up" content={content} width='30vw'></Form>
+      <Form name="Sign up" content={content} width='30vw' textAlign= 'center'></Form>
   )
 }

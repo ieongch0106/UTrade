@@ -22,6 +22,6 @@ export default function Settings() {
       )
 
   return (
-    <Form content={content} width='50vw'></Form>
+    <Form content={content} width='50vw' textAlign= 'center'></Form>
   )
 }

@@ -28,8 +28,6 @@ export default function SignIn() {
   )
 
   return (
-    <>
       <Form name="Sign in" content={content} width='30vw'></Form>
-    </>
   )
 }

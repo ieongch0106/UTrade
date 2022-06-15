@@ -7,7 +7,7 @@ export default function Settings() {
         <>
           <label>Username:
             <br />
-            <input type="text" name="name" value="your username"></input>
+            <input type="text" name="name" defaultValue="Gronky"></input>
             <br />
           </label>
           <Button type="submit" size="md" value="Save Profile"></Button>

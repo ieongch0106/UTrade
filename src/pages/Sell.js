@@ -34,17 +34,19 @@ export default function Sell() {
               <input type="text" name="price" placeholder='0'></input>
               <br /><br />
             </label>
-          </div>
-          <div textAlign="right">
-            <label>Upload up to 5 Images:
-            <input type="text" name="images" placeholder=''></input>
-            <br /><br />
-          </label>
-          </div>
-          {/* placeholder link to home rn (should actually take to next page) */}
-          <Link to="/">
+            <Link to="/">
             <Button type="submit" size="md" value="Continue"></Button>
           </Link>
+          </div>
+          <div margin-right= "0">
+            {/* for images */}
+          </div>
+           {/* <label>Upload up to 5 Images:
+            <input type="text" name="images" placeholder=''></input>
+            <br /><br />
+          </label> */}
+          {/* placeholder link to home rn (should actually take to next page) */}
+          
         </>
       )
 

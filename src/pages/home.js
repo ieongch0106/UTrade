@@ -37,10 +37,10 @@ export default function Home() {
             </div>
           <div className='home-page'>
             <Link to="/buy">
-              <Button size='lg' value='Buy Here'></Button>
+              <Button size='lg' value='Buy Here' />
             </Link>
             <Link to="/sell">
-              <Button size='lg' value='Sell Here'></Button>
+              <Button size='lg' value='Sell Here' />
             </Link>
           </div>
           </div>

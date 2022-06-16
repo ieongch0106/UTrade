@@ -14,20 +14,20 @@ export default function SignIn() {
     <>
       <label>Username:
         <br />
-        <input type="text" name="name" placeholder='Enter username'></input>
+        <input type="text" name="name" placeholder='Enter username' />
         <br />
       </label>
       <label>Password:
         <br />
-        <input type="text" name="password" placeholder='Enter password'></input>
+        <input type="text" name="password" placeholder='Enter password' />
         <br /><br />
       </label>
-      <Button type="submit" size="md" value="Sign in"></Button>
+      <Button type="submit" size="md" value="Sign in" />
       <div>{link}</div>
     </>
   )
 
   return (
-      <Form name="Sign in" content={content} width='30vw' textAlign= 'center'></Form>
+      <Form name="Sign in" content={content} width='30vw' textAlign= 'center' />
   )
 }

@@ -1,56 +1,75 @@
 import React from 'react'
 import { Button, Form } from '../components/Components'
-// import { TextBoxComponent } from '@syncfusion/ej2-react-inputs';
-import { Link } from "react-router-dom";
+import { useForm } from "react-hook-form";
 
-export default function Sell() {
-    const content = (
-        <>
-          <div className='product_details'>
-            <h3>What would you like to sell?</h3>
-            <label>Name of product:
-              <input type="text" name="product" placeholder='Enter product'></input>
-              <br />
-            </label>
-            <label>Condition:
-              <input type="text" name="condition" placeholder='e.g. Good, used'></input>
-              <br /><br />
-            </label>
-            <label>Category:
-              <input type="text" name="category" placeholder='e.g. Appliance, apparel'></input>
-              <br /><br />
-            </label>
-            <label>Product Description:
-              <input type="textarea" multiline={true} name="description" placeholder='Brief description of your product'></input>
-              {/* <TextBoxComponent multiline={true} name="description" placeholder='Brief description of your product'></TextBoxComponent> */}
-              <br /><br />
-            </label>
-            <label>Your Location:
-              <input type="text" name="location" placeholder='Amherst, MA'></input>
-              <br /><br />
-            </label>
-            <label>Selling Price:
-              {/* <p>$</p>$ */} $
-              <input type="text" name="price" placeholder='0'></input>
-              <br /><br />
-            </label>
-            <Link to="/">
-            <Button type="submit" size="md" value="Continue"></Button>
-          </Link>
-          </div>
-          <div margin-right= "0">
-            {/* for images */}
-          </div>
-           {/* <label>Upload up to 5 Images:
-            <input type="text" name="images" placeholder=''></input>
-            <br /><br />
-          </label> */}
-          {/* placeholder link to home rn (should actually take to next page) */}
-          
-        </>
-      )
+export default function Sell(props) {
+  const { register, handleRegister } = useForm();
+  const Category = [
+    { label: 'Appliance', value: 'appliance' },
+    { label: 'Apparel', value: 'apparel' },
+    { label: 'Furniture', value: 'furniture' },
+    { label: 'Rentals', value: 'rentals' },
+    { label: 'Eletronics', value: 'electronics' },
+    { label: 'Vehicles', value: 'vehicles' },
+    { label: 'Miscellaneous', value: 'miscellaneous' },
+  ]
+
+  const content = (
+      <>
+        <div className='product_details'>
+          <h3>What would you like to sell?</h3>
+          <label>Name of product:
+            <input type="text" name="product" placeholder='Enter product' required />
+          </label>
+            <br />
+          <label>Condition:
+            <input type="text" name="condition" placeholder='e.g. Good, used' />
+          </label>
+            <br />
+          <label>Category:
+              <select>
+                <option>appliance</option>
+                <option>vehicles</option>
+              </select>
+          </label>
+            <br />
+          <label>Product Description:&nbsp;
+            <textarea cols={40} rows={4} style={{resize: 'none', fontFamily: 'inherit'}} placeholder="e.g. price can be negotiated, contact me by phone +1 123-456-7890" />
+          </label>
+          <br />
+          <label>Your Location:
+            <input type="text" name="location" placeholder='Amherst, MA' />
+          </label>
+            <br />
+          <label>Selling Price: $
+            <input
+              type="number"
+              name="price"
+              min={0.00}
+              max={1000000} 
+              step={0.01}
+              placeholder='0'
+              {...register("price", {
+                valueAsNumber: true,
+              })}
+            />
+          </label>
+            <br />
+          <Button type="submit" size="md" value="Continue" />
+        </div>
+        <div margin-right="0">
+          {/* for images */}
+        </div>
+          {/* <label>Upload up to 5 Images:
+          <input type="text" name="images" placeholder=''></input>
+          <br /><br />
+        </label> */}
+        {/* placeholder link to home rn (should actually take to next page) */}
+        
+      </>
+    )
 
   return (
-    <Form content={content} width='95vw' textAlign= 'left' paddingLeft="20px" ></Form>
+    <Form content={content} width='95vw' textAlign= 'left' paddingLeft="20px" />
   )
 }

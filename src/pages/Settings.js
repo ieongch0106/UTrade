@@ -7,10 +7,10 @@ export default function Settings() {
         <>
           <label>Username:
             <br />
-            <input type="text" name="name" defaultValue="Gronky"></input>
+            <input type="text" name="name" defaultValue="Gronky" />
             <br />
           </label>
-          <Button type="submit" size="md" value="Save Profile"></Button>
+          <Button type="submit" size="md" value="Save Profile" />
           <br /><br />
           <Link to='/'>Change Password</Link>
           <br />

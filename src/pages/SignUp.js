@@ -14,25 +14,25 @@ export default function SignIn() {
     <>
       <label>Username:
       <br />
-      <input type="text" name="name" placeholder='Enter username'></input>
+      <input type="text" name="name" placeholder='Enter username' />
       <br />
       </label>
       <label>Password:
       <br />
-      <input type="text" name="password" placeholder='Enter password'></input>
+      <input type="text" name="password" placeholder='Enter password' />
       <br />
       </label>
       <label>Re-type password:
         <br />
-        <input type="text" name="confirmpw" placeholder='Confirm password'></input>
+        <input type="text" name="confirmpw" placeholder='Confirm password' />
         <br /><br />
       </label>
-      <Button type="submit" size="md" value="Sign up"></Button>
+      <Button type="submit" size="md" value="Sign up" />
       <div>{link}</div>
     </>
   )
 
   return (
-      <Form name="Sign up" content={content} width='30vw' textAlign= 'center'></Form>
+      <Form name="Sign up" content={content} width='30vw' textAlign= 'center' />
   )
 }

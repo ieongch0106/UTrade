@@ -28,14 +28,20 @@ export default function Sell(props) {
             <br />
           <label>Category:
               <select>
+                <option>select</option>
                 <option>appliance</option>
                 <option>vehicles</option>
+                <option>rentals</option>
+                <option>apparel</option>
+                <option>misc</option>
               </select>
           </label>
             <br />
           <label>Product Description:&nbsp;
-            <textarea cols={40} rows={4} style={{resize: 'none', fontFamily: 'inherit'}} placeholder="e.g. price can be negotiated, contact me by phone +1 123-456-7890" />
+            
           </label>
+          <br/>
+          <textarea cols={40} rows={5} style={{resize: 'none', fontFamily: 'inherit'}} placeholder="e.g. price can be negotiated, contact me by phone +1 123-456-7890" />
           <br />
           <label>Your Location:
             <input type="text" name="location" placeholder='Amherst, MA' />

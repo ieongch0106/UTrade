@@ -16,8 +16,9 @@ export default function Sell(props) {
 
   const content = (
       <>
-        <div className='product_details'>
-          <h3>What would you like to sell?</h3>
+        <div className='product_details' display="flex">
+          <div>
+            <h3>What would you like to sell?</h3>
           <label>Name of product:
             <input type="text" name="product" placeholder='Enter product' required />
           </label>
@@ -61,21 +62,20 @@ export default function Sell(props) {
             />
           </label>
             <br />
+          </div>
+          <div display="flex">
+          {/* for images */}
+            <label>Upload up to 5 Images:
+            <input type="file" multiple name="images" placeholder=''></input>
+            <br /><br />
+            </label>
+          </div>
           <Button type="submit" size="md" value="Continue" />
         </div>
-        <div margin-right="0">
-          {/* for images */}
-        </div>
-          {/* <label>Upload up to 5 Images:
-          <input type="text" name="images" placeholder=''></input>
-          <br /><br />
-        </label> */}
-        {/* placeholder link to home rn (should actually take to next page) */}
-        
       </>
     )
 
   return (
-    <Form content={content} width='95vw' textAlign= 'left' paddingLeft="20px" />
+    <Form content={content} encType="multipart/form-data" width='95vw' textAlign= 'left' paddingLeft="20px" />
   )
 }

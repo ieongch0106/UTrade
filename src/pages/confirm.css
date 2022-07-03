@@ -1,0 +1,14 @@
+.main_div{
+    display: flex;
+    background-color: cadetblue;
+}
+
+.left{
+    float: left;
+    background-color: aquamarine;
+}
+
+.right{
+    float: right;
+    background-color: antiquewhite;
+}

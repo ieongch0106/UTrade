@@ -7,6 +7,7 @@ import Sell from './pages/Sell';
 import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
 import Settings from './pages/Settings';
+import Confirm from './pages/confirm'
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path='/login' element={<SignIn />} />
         <Route path='/register' element={<SignUp />} />
         <Route path='/settings' element={<Settings />} />
+        <Route path='/confirm' element={<Confirm />} />
       </Routes>
     </Router>
   )

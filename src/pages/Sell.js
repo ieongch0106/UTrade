@@ -1,12 +1,12 @@
 import React, {useState} from 'react'
 import { Button, Form } from '../components/Components'
 import { useForm } from "react-hook-form";
-import MultiImageInput from "react-multiple-image-input";
 import { Link } from "react-router-dom";
 
 
 export default function Sell(props) {
   const { register, handleRegister } = useForm();
+  const [fileLimit, setFileLimit] = useState(false);
   const Category = [
     { label: 'Appliance', value: 'appliance' },
     { label: 'Apparel', value: 'apparel' },
@@ -17,12 +17,12 @@ export default function Sell(props) {
     { label: 'Miscellaneous', value: 'miscellaneous' },
   ]
 
-  const [images, setImages] = useState({});
-  const crop = {
-    unit: "%",
-    aspect: 4 / 3,
-    width: "100"
-  };
+  const handleChange = (e) => {
+    if (e.target.files.length >= 5) {
+      // e.preventDefault();
+      // return;
+    }
+  }
 
   function setData() {
     let obj = {product: content.product,
@@ -91,7 +91,7 @@ export default function Sell(props) {
           <div display="flex">
           {/* for images */}
             <label>Upload up to 5 Images:
-            <input type="file" images={images} setImages={setImages} name="images" placeholder=''></input>
+            <input type="file" accept="image/*" name="images" multiple onChange={(e) => handleChange(e)} />
             <br /><br />
             </label>
           </div>

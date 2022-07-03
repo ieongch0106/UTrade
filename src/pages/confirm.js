@@ -1,7 +1,6 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import { Button, Form } from '../components/Components'
 import { useForm } from "react-hook-form";
-import MultiImageInput from "react-multiple-image-input";
 import './Sell.js'
 
 export default function Sell(props) {

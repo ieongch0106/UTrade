@@ -7,6 +7,12 @@ import './Sell.js'
 export default function Sell(props) {
   const { register, handleRegister } = useForm();
 
+  function getData() {
+    let data = sessionStorage.getItem("mySessionStorage")
+    data = JSON.parse(data)
+    // console.log(data)
+  }
+
   const content = (
     <>
     <h2>test</h2>

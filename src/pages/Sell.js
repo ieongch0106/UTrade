@@ -98,7 +98,6 @@ export default function Sell(props) {
           <Link to="/confirm">
             <Button onClick={() => this.setData()} type="submit" size="md" value="Continue" />
           </Link>
-          
         </div>
       </>
     )

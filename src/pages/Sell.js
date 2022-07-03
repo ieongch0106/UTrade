@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import { Button, Form } from '../components/Components'
 import { useForm } from "react-hook-form";
 import MultiImageInput from "react-multiple-image-input";
-
+import { Link } from "react-router-dom";
 
 
 export default function Sell(props) {
@@ -95,7 +95,10 @@ export default function Sell(props) {
             <br /><br />
             </label>
           </div>
-          <Button onClick={() => this.setData()} type="submit" size="md" value="Continue" />
+          <Link to="/confirm">
+            <Button onClick={() => this.setData()} type="submit" size="md" value="Continue" />
+          </Link>
+          
         </div>
       </>
     )

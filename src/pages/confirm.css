@@ -1,14 +1,27 @@
 .main_div {
     display: flex;
-    background-color: cadetblue;
+    /* background-color: cadetblue; */
 }
 
 .left{
-    float: left;
-    background-color: aquamarine;
+    float:left;
+    text-align: center;
+    width:25%;
+    height:280px;
+    background-color: antiquewhite;
+}
+
+.middle{
+    float:left; 
+    text-align: center;
+    width:50%;
+    height:280px;
+    background-color: beige;
 }
 
 .right{
-    float: right;
-    background-color: antiquewhite;
+    float:right;
+    width:25%;
+    height:280px;
+    background-color: bisque;
 }

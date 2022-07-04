@@ -18,7 +18,11 @@ export default function Sell(props) {
   ]
 
   const handleChange = (e) => {
-    if (e.target.files.length >= 5) {
+    const MAX_LENGTH = 5
+    if (e.target.files.length >= MAX_LENGTH) {
+      e.preventDefault();
+      alert(`Cannot upload files more than ${MAX_LENGTH}`);
+      return;
       // e.preventDefault();
       // return;
     }

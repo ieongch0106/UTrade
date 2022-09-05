@@ -1,10 +1,11 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
+import { Button } from '../styles/Button.style'
 
 export default function Navbar() {
 
   return (
-    <nav className='nav' style={{background: 'white'}}>
+    <nav>
         <ul>
             <li>
                 <NavLink to='/'>Home</NavLink>
@@ -16,12 +17,12 @@ export default function Navbar() {
                 <NavLink to='/sell'>Sell</NavLink>
             </li>
             <li>
-                <NavLink to='/about'>Who We Are</NavLink>
+                <NavLink to='/about'>About</NavLink>
             </li>
         </ul>
         <ul>
-            <li style={{display: 'flex', paddingRight: '20px'}}>
-                <NavLink to='/login'>Sign In</NavLink>
+            <li>
+                <NavLink to='/login'>Login</NavLink>
             </li>
         </ul>
     </nav>

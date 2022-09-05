@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button } from '../styles/Button.style';
 import SearchBar from '../components/SearchBar';
+import { Link } from 'react-router-dom';
 
 export default function Home() {
 
@@ -9,7 +10,11 @@ export default function Home() {
         <div className='home-search'>
             <h2>The #1 Site To Buy And Sell At UMass Amherst</h2>
             <SearchBar placeholder="search for anything..."/>
-            <h4>nothing on your mind?&nbsp;&nbsp;<Button sty="link" bg="primary" color='white'>Look around</Button></h4>
+            <h4>nothing on your mind?&nbsp;&nbsp;
+            <Link to="/buy">
+              <Button sty="link" bg="primary" color='white'>Look around</Button>
+            </Link>
+            </h4>
         </div>
       </>
   )

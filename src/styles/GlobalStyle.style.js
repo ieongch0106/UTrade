@@ -30,7 +30,13 @@ export const GlobalStyles = createGlobalStyle`
         align-items: center;
         gap: 25px;
     }
-    
+
+    nav ul:last-child {
+        color: var(--white);
+        font-size: 18px;
+        gap: 12px;
+    }
+
     nav a {
         color: var(--white);
         font-weight: 500;

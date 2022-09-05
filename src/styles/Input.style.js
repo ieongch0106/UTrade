@@ -15,7 +15,6 @@ const InputSearch = `
 `
 
 const InputModal = `
-    background-color: white;
     margin: 5px;
     font-size: 18px !important;
     padding-left: 10px;
@@ -39,7 +38,7 @@ export const Input = styled.input`
     ${InputStyle};
     ${props => props.bg ?
         `background-color: var(--${props.bg});` :
-        `background-color: var(--primary);`
+        `background-color: var(--white);`
     }
     color: var(--${props => props.color});
     font-family: 'Segoe UI';

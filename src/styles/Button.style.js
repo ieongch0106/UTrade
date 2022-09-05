@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const BtnStyNav = `
+const btnStyNav = `
     padding: 0.5em 1.25em;
     font-size: 17px;
     color: var(--black);
@@ -16,25 +16,33 @@ const btnStySearch = `
     border: none;
 `
 
+const btnStyModal = `
+    font-size: 20px;
+    padding: 8px;
+    min-height: 40px; 
+    min-width: 330px;
+    border-radius: 0.25rem;
+`
+
 const btnStyLink = `
-    padding: 0.5rem;
-    border-radius: 0.3rem;
     font: inherit;
-    font-size: medium;
-    color: var(--primary);
     border: none;
+    background: none !important;
+    color: maroon;
 `
 
 const ButtonStyle = props => {
     switch (props.sty) {
         case 'nav':
-            return BtnStyNav;
+            return btnStyNav;
         case 'search':
             return btnStySearch;
+        case 'modal':
+            return btnStyModal;
         case 'link':
             return btnStyLink;
         default:
-            return BtnStyNav;
+            return btnStyNav;
     }
 }
 
@@ -46,11 +54,12 @@ export const Button = styled.button`
     }
     color: var(--${props => props.color});
     cursor: pointer;
+    transition: all 0.05s ease-in;
     &:hover {
-        filter: brightness(0.9);
+        filter: brightness(0.85);
     }
-    &:focus &:active {
-        transform: scale(0.5);
+    &:focus, &:active {
+        transform: scale(0.98);
         filter: brightness(0.7);
     }
 `

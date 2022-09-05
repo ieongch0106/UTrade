@@ -1,19 +1,30 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { AuthContext } from './context/AuthProvider';
+import { PrivateRoute } from './context/PrivateRoute';
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import Buy from './pages/Buy';
 import { GlobalStyles } from './styles/GlobalStyle.style';
+import { useState } from 'react';
+import Sell from './pages/Sell';
+import About from './pages/About';
 
 function App() {
+  const [ Auth, setAuth ] = useState('');
+
   return (
-    <Router>
-      <GlobalStyles />
-      <Navbar />
-      <Routes>
-        <Route exact path='/' element={<Home/>} />
-        <Route path='/buy' element={<Buy/>} />
-      </Routes>
-    </Router>
+    <AuthContext.Provider value={{Auth, setAuth}}>
+      <Router>
+        <GlobalStyles />
+        {!Auth? <Navbar />: <Navbar userloggedIn={true}/>}
+        <Routes>
+          <Route exact path='/' element={<Home/>} />
+          <Route path='/buy' element={<Buy/>} />
+          <Route path='/sell' element={<PrivateRoute><Sell/></PrivateRoute>} />
+          <Route path='/about' element={<About/>} />
+        </Routes>
+      </Router>
+    </AuthContext.Provider>
   )
 }
 

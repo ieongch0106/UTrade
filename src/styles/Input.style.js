@@ -15,7 +15,7 @@ const inputStySearch = `
 `
 
 const inputStySell = `
-
+    
 `
 
 const inputStyModal = `

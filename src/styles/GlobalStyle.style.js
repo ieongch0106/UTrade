@@ -8,7 +8,6 @@ export const GlobalStyles = createGlobalStyle`
     * {
         margin: 0;
         padding: 0;
-        overflow-x: hidden;
         box-sizing: border-box;
         -webkit-box-sizing: border-box;
         -moz-box-sizing: border-box;
@@ -19,10 +18,14 @@ export const GlobalStyles = createGlobalStyle`
         text-decoration: none;
     }
 
-    body {
+    body, html {
         /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
         font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
         font-size: 17px;
+    }
+
+    body {
+        overflow-x: hidden;
     }
 
     nav {
@@ -37,21 +40,23 @@ export const GlobalStyles = createGlobalStyle`
         align-items: center;
         cursor: pointer;
         gap: 25px;
+        list-style: none;
+    }
+
+    nav ul:first-child li {
+        height: 25px;
     }
 
     nav ul div {
         display: flex;
         align-items: center;
         color: var(--white);
-        padding: 15px 10px;
+        padding: 15px 0px;
+        margin-right: -15px;
         font-size: 18px;
         gap: 10px;
     }
 
-    nav li {
-        padding-bottom: 1px;
-    }
-    
     nav a {
         color: var(--white);
         font-weight: 500;
@@ -701,8 +706,8 @@ export const GlobalStyles = createGlobalStyle`
     .dropdown-content-open {
         display: block;
         position: absolute;
-        margin-top: 174px;
-        margin-left: -28px;
+        margin-top: 180px;
+        margin-left: -60px;
         background-color: var(--white);
         min-width: 180px;
         box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);

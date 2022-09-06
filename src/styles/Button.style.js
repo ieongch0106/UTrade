@@ -25,10 +25,9 @@ const btnStyModal = `
 `
 
 const btnStyLink = `
+    padding: 0.3rem;
     font: inherit;
     border: none;
-    background: none !important;
-    color: maroon;
 `
 
 const ButtonStyle = props => {

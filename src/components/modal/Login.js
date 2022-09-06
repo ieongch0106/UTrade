@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect, useContext } from 'react';
-import { Navigate } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import { AuthContext } from "../../context/AuthProvider";
 import axios from 'axios';
 import { Input } from '../../styles/Input.style';
@@ -79,11 +79,11 @@ export default function Login() {
                                 Remember me
                             </label>
                         </div>
-                        <Button sty="link">Forgot Password?</Button>
+                        <Link to="/">Forgot Password?</Link>
                     </div>
                 </form>
                 <hr />
-                <Button className="mt-2" sty="link" onClick={() => <Register />}>Create a new account</Button>
+                <div className='pointer mt-2 text-primary' onClick={() => document.getElementById('join_button').click()}>Create a new account</div>
             </div>
         )}
     </>

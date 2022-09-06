@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const InputSearch = `
+const inputStySearch = `
     height: 45px;
     width: 45vw;
     font-size: 18px;
@@ -14,7 +14,11 @@ const InputSearch = `
     }
 `
 
-const InputModal = `
+const inputStySell = `
+
+`
+
+const inputStyModal = `
     margin: 5px;
     font-size: 18px !important;
     padding-left: 10px;
@@ -25,12 +29,14 @@ const InputModal = `
 
 const InputStyle = props => {
     switch (props.sty) {
+        case 'sell':
+            return inputStySell;
         case 'search':
-            return InputSearch;
+            return inputStySearch;
         case 'modal':
-            return InputModal;
+            return inputStyModal;
         default:
-            return InputModal;
+            return inputStyModal;
     }
 }
 

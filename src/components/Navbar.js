@@ -6,13 +6,19 @@ import { AuthContext } from '../context/AuthProvider';
 import Modal from './modal';
 import { useState } from 'react';
 import Login from './modal/Login';
+import Register from './modal/Register';
+import FaceIcon from '@mui/icons-material/Face';
+import BookmarkIcon from '@mui/icons-material/Bookmark';
+import LogoutIcon from '@mui/icons-material/Logout';
 
 export default function Navbar({userloggedIn}) {
   const [ IsOpen, setIsOpen ] = useState(false);
   const [ DropdownOpen, setDropdownOpen ] = useState(false); 
+  const [ Content, SetContent ] = useState(<></>);
   const {Auth} = useContext(AuthContext);
-  const ModalHandler = () => {
+  const ModalHandler = (e) => {
     setIsOpen(true);
+    e.target.id === "login_button" ? SetContent(<Login />) : SetContent(<Register />);
   }
 
   return (
@@ -34,8 +40,9 @@ export default function Navbar({userloggedIn}) {
         {!userloggedIn ? (
             <ul>
                 <li>
-                    <span className="fw-bold pointer" onClick={ModalHandler}>Login</span>
-                    <Modal open={IsOpen} onClose={() => setIsOpen(false)}><Login /></Modal>
+                    <span className="fw-bold pointer" onClick={(e) => ModalHandler(e)} id="login_button">Login</span>
+                    <span className="d-none" onClick={(e) => ModalHandler(e)} id="join_button">Sign up</span>
+                    <Modal open={IsOpen} onClose={() => setIsOpen(false)}>{Content}</Modal>
                 </li>
             </ul>
         ) : (
@@ -47,10 +54,10 @@ export default function Navbar({userloggedIn}) {
                         {Auth.user}
                         <ArrowDropDownIcon sx={{marginLeft: '-5px'}}/>
                     </div>
-                    <ul>
-                        <li>Account</li>
-                        <li>Favorites</li>
-                        <li>Logout</li>
+                    <ul className={DropdownOpen ? "dropdown-content-open" : "hidden"}>
+                        <li><FaceIcon sx={{color: 'var(--primary)'}}/>Account</li>
+                        <li><BookmarkIcon sx={{color: 'var(--primary)'}} />Your Watchlist</li>
+                        <li><LogoutIcon sx={{color: 'var(--primary)'}} />Log out</li>
                     </ul>
                 </ul>
             </>

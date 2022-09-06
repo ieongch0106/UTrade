@@ -12,7 +12,7 @@ export default function Home() {
             <SearchBar placeholder="search for anything..."/>
             <h4>nothing on your mind?&nbsp;&nbsp;
             <Link to="/buy">
-              <Button sty="link" bg="primary" color='white'>Look around</Button>
+              <Button sty="link" color="white">Look around</Button>
             </Link>
             </h4>
         </div>

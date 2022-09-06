@@ -1,10 +1,10 @@
+import { faCheck, faInfoCircle, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import axios from 'axios';
 import React, { useEffect, useRef, useState } from 'react'
-import { Button } from '/src/styles/Button.style'
-import { Input } from '/src/styles/Input.style'
-import CheckCircle from '@mui/icons-material/CheckCircle.js';
-
-const CheckCircleIcon = CheckCircle.default;
+import { Button } from '../../styles/Button.style'
+import { Input } from '../../styles/Input.style'
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 
 export default function Register() {
   const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
@@ -128,10 +128,10 @@ export default function Register() {
                         onBlur={() => setUserFocus(false)}
                         required
                         />
-                    {/* <FontAwesomeIcon icon={faCheck} className={validName ? "valid" : "hide"} /> */}
-                    {/* <FontAwesomeIcon icon={faTimes} className={validName || !user ? "hide" : "invalid"} /> */}
+                    <FontAwesomeIcon icon={faCheck} className={validName ? "valid" : "hide"} />
+                    <FontAwesomeIcon icon={faTimes} className={validName || !user ? "hide" : "invalid"} />
                     <p className={userFocus && user && !validName ? "instructions" : "offscreen"}>
-                        {/* <FontAwesomeIcon icon={faInfoCircle} /> */}
+                        <FontAwesomeIcon icon={faInfoCircle} />
                         4 to 24 characters.<br />
                         Must begin with a letter.<br />
                         Letters, numbers, underscores, hyphens allowed.
@@ -143,16 +143,16 @@ export default function Register() {
                         name="fullname"
                         sty="modal"
                         onChange={(e) => setFullname(e.target.value)}
-                        placeholder="Enter your full name" 
+                        placeholder="What's your preferred name?" 
                         autoComplete='off'
                         onFocus={() => setFullnameFocus(true)}
                         onBlur={() => setFullnameFocus(false)}
                         required
                         />
-                    {/* <FontAwesomeIcon icon={faCheck} className={validFullname ? "valid" : "hide"} />
-                    <FontAwesomeIcon icon={faTimes} className={validFullname || !fullname ? "hide" : "invalid"} /> */}
+                    <FontAwesomeIcon icon={faCheck} className={validFullname ? "valid" : "hide"} />
+                    <FontAwesomeIcon icon={faTimes} className={validFullname || !fullname ? "hide" : "invalid"} />
                     <p className={fullnameFocus && fullname && !validFullname ? "instructions" : "offscreen"}>
-                        {/* <FontAwesomeIcon icon={faInfoCircle} /> */}
+                        <FontAwesomeIcon icon={faInfoCircle} />
                         4 to 24 characters.<br />
                         Must begin with a letter.<br />
                     </p>
@@ -169,10 +169,10 @@ export default function Register() {
                         onBlur={() => setEmailFocus(false)}
                         required
                         />
-                    {/* <FontAwesomeIcon icon={faCheck} className={validEmail ? "valid" : "hide"} />
-                    <FontAwesomeIcon icon={faTimes} className={validEmail || !email ? "hide" : "invalid"} /> */}
+                    <FontAwesomeIcon icon={faCheck} className={validEmail ? "valid" : "hide"} />
+                    <FontAwesomeIcon icon={faTimes} className={validEmail || !email ? "hide" : "invalid"} />
                     <p className={emailFocus && email && !validEmail ? "instructions" : "offscreen"}>
-                        {/* <FontAwesomeIcon icon={faInfoCircle} /> */}
+                        <FontAwesomeIcon icon={faInfoCircle} />
                         Enter a valid email<br />
                     </p>
                     <br />
@@ -187,10 +187,10 @@ export default function Register() {
                         onBlur={() => setPwdFocus(false)}
                         required
                     />
-                    {/* <FontAwesomeIcon icon={faCheck} className={validPwd ? "valid" : "hide"} />
-                    <FontAwesomeIcon icon={faTimes} className={validPwd || !pwd ? "hide" : "invalid"} /> */}
+                    <FontAwesomeIcon icon={faCheck} className={validPwd ? "valid" : "hide"} />
+                    <FontAwesomeIcon icon={faTimes} className={validPwd || !pwd ? "hide" : "invalid"} />
                     <p className={pwdFocus && !validPwd ? "instructions" : "offscreen"}>
-                        {/* <FontAwesomeIcon icon={faInfoCircle} /> */}
+                        <FontAwesomeIcon icon={faInfoCircle} />
                         8 to 24 characters.<br />
                         Must include uppercase and lowercase letters, a number and a special character.<br />
                         Allowed special characters: <span aria-label="exclamation mark">!</span> <span aria-label="at symbol">@</span> <span aria-label="hashtag">#</span> <span aria-label="dollar sign">$</span> <span aria-label="percent">%</span>
@@ -207,10 +207,10 @@ export default function Register() {
                         onBlur={() => setMatchFocus(false)}
                         required
                     />
-                    {/* <FontAwesomeIcon icon={faCheck} className={validMatch && matchPwd ? "valid" : "hide"} />
-                    <FontAwesomeIcon icon={faTimes} className={validMatch || !matchPwd ? "hide" : "invalid"} /> */}
+                    <FontAwesomeIcon icon={faCheck} className={validMatch && matchPwd ? "valid" : "hide"} />
+                    <FontAwesomeIcon icon={faTimes} className={validMatch || !matchPwd ? "hide" : "invalid"} />
                     <p className={matchFocus && !validMatch ? "instructions" : "offscreen"}>
-                        {/* <FontAwesomeIcon icon={faInfoCircle} /> */}
+                        <FontAwesomeIcon icon={faInfoCircle} />
                         Must match the first password input field.
                     </p>
                     <br />
@@ -227,7 +227,7 @@ export default function Register() {
                         required
                     />
                     <p className={phoneFocus && phone && !validPhone ? "instructions" : "offscreen"}>
-                        {/* <FontAwesomeIcon icon={faInfoCircle} /> */}
+                        <FontAwesomeIcon icon={faInfoCircle} />
                         Enter Phone number in proper format<br />
                         +Country Code (###) ### #### <br />
                     </p>
@@ -242,7 +242,7 @@ export default function Register() {
                     <br /><br />
                 </form>
                 <hr />
-                <Button sty="link" onClick={() => document.getElementById('login_button').click()}>Already have an account?</Button>
+                <div className='pointer mt-2 text-primary' onClick={() => document.getElementById('login_button').click()}>Already have an account?</div>
             </div>
         )}
     </>

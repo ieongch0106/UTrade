@@ -15,7 +15,14 @@ const inputStySearch = `
 `
 
 const inputStySell = `
-    
+    border: 1px solid var(--lightgrey);
+    width: 100%;
+    font-size: medium;
+    padding: 6px 12px;
+    border-radius: 0.2rem;
+    &:focus, &:active {
+        outline: 2px solid var(--primary);
+    }
 `
 
 const inputStyModal = `

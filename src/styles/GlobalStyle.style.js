@@ -66,6 +66,7 @@ export const GlobalStyles = createGlobalStyle`
     nav li:hover {
         border-bottom: 1px var(--white) solid;
     }
+
     /* format, styling, position */
     .align-items-center {
         align-items: center;
@@ -796,5 +797,29 @@ export const GlobalStyles = createGlobalStyle`
 
     .home-search h2 {
         font-size: 28px;
+    }
+
+    .sell {
+        font-size: medium;
+        background-color: lightgrey;
+        height: max-content;
+        width: 50vw;
+        padding: 60px 80px;
+        text-align: left;
+        margin: auto;
+    }
+
+    .sell textarea {
+        width: 100%;
+        height: 100px;
+        border-radius: 0.2rem;
+        resize: none;
+        font: inherit;
+        padding: 2px 8px;
+    }
+
+    .sell textarea:focus, .sell textarea:active {
+        outline: none;
+        border: 2px solid var(--primary);
     }
 `

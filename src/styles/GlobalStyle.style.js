@@ -32,6 +32,7 @@ export const GlobalStyles = createGlobalStyle`
         display: flex;
         justify-content: space-between;
         padding: 0 30px;
+        height: 55px;
         background-color: var(--primary);
     }
     
@@ -47,6 +48,11 @@ export const GlobalStyles = createGlobalStyle`
         height: 25px;
     }
 
+    nav ul span {
+        color: var(--white);
+        height: 25px;
+    }
+    
     nav ul div {
         display: flex;
         align-items: center;

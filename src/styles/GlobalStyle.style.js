@@ -822,4 +822,13 @@ export const GlobalStyles = createGlobalStyle`
         outline: none;
         border: 2px solid var(--primary);
     }
+
+    .sell-media {
+        text-align: center;
+        color: var(--lightgrey);
+        border: 5px solid var(--softgrey);
+        border-style: dashed;
+        width: max-content;
+        padding: 20px 30px 40px;
+    }
 `

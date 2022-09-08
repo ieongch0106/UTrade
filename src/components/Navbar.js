@@ -41,7 +41,7 @@ export default function Navbar({userloggedIn}) {
             <ul>
                 <li>
                     <span className="fw-bold pointer" onClick={(e) => ModalHandler(e)} id="login_button">Login</span>
-                    <span className="d-none" onClick={(e) => ModalHandler(e)} id="join_button">Sign up</span>
+                    <span onClick={(e) => ModalHandler(e)} id="join_button" hidden>Sign up</span>
                     <Modal open={IsOpen} onClose={() => setIsOpen(false)}>{Content}</Modal>
                 </li>
             </ul>

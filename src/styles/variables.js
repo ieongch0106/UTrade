@@ -8,12 +8,11 @@ const variables = css`
         --dark: #46494d;
         --cyan: #87b9c4;
         --gold: #f7e948;
-        --grey: #edeff2;
+        --grey: grey;
         --red: #f52525;
         --green: #1DBF73;
-        --darkgrey: #302c2c;
-        --lightgrey: #f2f3f5;
-        --softgrey: #e0e0de;
+        --lightgrey: rgba(128, 128, 128, 0.9);
+        --softgrey: rgba(128, 128, 128, 0.65);
     }
 `
 

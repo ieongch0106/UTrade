@@ -18,7 +18,7 @@ function App() {
     <AuthContext.Provider value={{Auth, setAuth}}>
       <Router>
         <GlobalStyles />
-        {Auth? <Navbar />: <Navbar userloggedIn={true}/>}
+        {!Auth? <Navbar />: <Navbar userloggedIn={true}/>}
         <Routes>
           <Route exact path='/' element={<Home/>} />
           <Route path='/buy' element={<Buy/>} />

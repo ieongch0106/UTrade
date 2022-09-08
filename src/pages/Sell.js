@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Input } from '../styles/Input.style'
 import Select from 'react-select';
+import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
 
 export default function Sell() {
   const [Other, SetOther] = useState(null);
@@ -39,6 +40,10 @@ export default function Sell() {
       boxShadow: "none",
       border: state.isFocused && "2px solid var(--primary)"
     }),
+  }
+
+  const mediaHandler = () => {
+    
   }
 
   return (
@@ -82,6 +87,13 @@ export default function Sell() {
       {Other}
       <br />
       <textarea placeholder='Describe your item (optional)'/>
+      Photos of your item:
+      <div className='sell-media' onClick={()=> mediaHandler}>
+        <AddPhotoAlternateIcon sx={{fontSize: '60px'}}/>
+        <br />
+        + 10 Photos
+      </div>
+      <input />
     </form>
   )
 }

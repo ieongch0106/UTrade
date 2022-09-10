@@ -28,6 +28,10 @@ export const GlobalStyles = createGlobalStyle`
         overflow-x: hidden;
     }
 
+    input {
+        border: none !important;
+    }
+
     nav {
         display: flex;
         justify-content: space-between;
@@ -819,6 +823,7 @@ export const GlobalStyles = createGlobalStyle`
         width: 100%;
         height: 100px;
         border-radius: 0.2rem;
+        border: none;
         resize: none;
         font: inherit;
         padding: 2px 8px;
@@ -829,12 +834,23 @@ export const GlobalStyles = createGlobalStyle`
         border: 2px solid var(--primary);
     }
 
-    .sell-media {
+    /* .media-list div {
         text-align: center;
+        width: max-content;
+        padding: 15px 20px 25px;
+    } */
+
+    .media-list {
+        width: 100%;
+        display: flex;
+        gap: 0.5%;
+    }
+    
+    .media-list div {
+        width: 19.6%;
         color: var(--lightgrey);
         border: 5px solid var(--softgrey);
         border-style: dashed;
-        width: max-content;
-        padding: 20px 30px 40px;
     }
+    
 `

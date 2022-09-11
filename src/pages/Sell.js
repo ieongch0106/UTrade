@@ -6,10 +6,12 @@ import { useRef } from 'react';
 
 export default function Sell() {
   const [ Other, SetOther ] = useState(null);
+  const [ OtherL, SetOtherL ] = useState(null);
   const [ Photos, SetPhotos ] = useState(10);
   const inputRef = useRef();
   const locations = [
-    { value: '' }
+    { value: 'on-campus', label: 'On Campus' },
+    { value: 'off-campus', label: 'Off Campus' }
   ]
 
   const categories = [
@@ -40,7 +42,26 @@ export default function Sell() {
       SetOther(null);
     }
   }
-
+  const locationHandler = (e) => {
+    if (e !== null) {
+      return e.value === 'off-campus' ? 
+      SetOtherL(<p>
+        <div className='location-thingy'>
+          <div className='city-drop'>
+          City<Input sty="sell"/>
+          </div>
+          <div className='city-drop'>
+            State<Input sty="sell"/>
+          </div>
+          {/* <div className='city-drop'>
+            Zip Code<Input sty="sell"/><br />
+          </div> */}
+        </div>
+        </p>) : 
+      SetOtherL(null);
+    }
+  }
+  
   const selectStyle = {
     control: (provided, state) => ({
       ...provided,
@@ -63,10 +84,11 @@ export default function Sell() {
       <Input type="text" sty="sell" placeholder='💲 Price' />
       <br /><br />
       <Select
-        options={categories}
+        options={locations}
         placeholder='📍 Location'
         isSearchable
         isClearable
+        onChange={(e) => locationHandler(e)}
         styles={selectStyle}
         theme={(theme) => ({
           ...theme,
@@ -77,6 +99,7 @@ export default function Sell() {
           }
         })}
       />
+      {OtherL}
       <br />
       <Select
         options={categories}

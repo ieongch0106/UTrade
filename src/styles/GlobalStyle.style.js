@@ -852,5 +852,14 @@ export const GlobalStyles = createGlobalStyle`
         border: 5px solid var(--softgrey);
         border-style: dashed;
     }
-    
+
+    .location-thingy{
+        display: flex;
+        flex-direction: row;
+        /* padding: 20px */
+    }
+
+    .city-drop{
+        padding-left: 5px
+    }
 `

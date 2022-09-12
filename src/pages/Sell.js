@@ -11,6 +11,7 @@ export default function Sell() {
   const Photo = useRef();
   const inputRef = useRef();
   const [Other, SetOther] = useState(null);
+  const [OtherL, SetOtherL] = useState(null);
   const [src, setPhoto] = useState(null);
   const [crop, setCrop] = useState({
     unit: 'px',
@@ -18,6 +19,10 @@ export default function Sell() {
     height: 250
   })
   const [completedCrop, setCompletedCrop] = useState(null);
+  const locations = [
+    { value: 'on-campus', label: 'On Campus' },
+    { value: 'off-campus', label: 'Off Campus' }
+  ]
 
   const categories = [
     { value: 'clothing-shoes-accessories', label: '👕 👠 👜 Clothing, Shoes & Accessories' },
@@ -47,7 +52,23 @@ export default function Sell() {
       SetOther(null);
     }
   }
-
+  const locationHandler = (e) => {
+    if (e !== null) {
+      return e.value === 'off-campus' ? 
+      SetOtherL(<p>
+        <div className='location-thingy'>
+          <div className='city-drop'>
+          City<Input sty="sell"/>
+          </div>
+          <div className='city-drop'>
+            State<Input sty="sell"/>
+          </div>
+        </div>
+        </p>) : 
+      SetOtherL(null);
+    }
+  }
+  
   const selectStyle = {
     control: (provided, state) => ({
       ...provided,
@@ -70,10 +91,11 @@ export default function Sell() {
       <Input type="text" sty="sell" placeholder='💲 Price' />
       <br /><br />
       <Select
-        options={categories}
+        options={locations}
         placeholder='📍 Location'
         isSearchable
         isClearable
+        onChange={(e) => locationHandler(e)}
         styles={selectStyle}
         theme={(theme) => ({
           ...theme,
@@ -84,6 +106,7 @@ export default function Sell() {
           }
         })}
       />
+      {OtherL}
       <br />
       <Select
         options={categories}

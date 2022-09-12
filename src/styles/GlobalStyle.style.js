@@ -838,6 +838,15 @@ export const GlobalStyles = createGlobalStyle`
         border: 2px solid var(--primary);
     }
 
+    .location-thingy{
+        display: flex;
+        flex-direction: row;
+    }
+
+    .city-drop{
+        padding-left: 5px
+    }
+
     .media-list {
         display: flex;
         flex-direction: column;
@@ -855,5 +864,4 @@ export const GlobalStyles = createGlobalStyle`
         border: 3px dashed var(--lightgrey);
         padding: 4em;
     }
-
 `

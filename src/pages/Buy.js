@@ -16,10 +16,10 @@ export default function Buy() {
   return (
     <ReactCrop
       crop={crop}
-      minWidth={50}
-      minHeight={50}
-      maxHeight={50}
-      maxWidth={50}
+      minWidth={800}
+      minHeight={800}
+      maxHeight={800}
+      maxWidth={800}
       onChange={c => setCrop(c)}
     >
     <img src={utrade} />

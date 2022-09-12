@@ -129,9 +129,8 @@ export default function Sell() {
               maxHeight={200}
               onChange={(c) => setCrop(c)}
               onComplete={(c) => setCompletedCrop(c)}
-              >
+            >
               <img src={src} alt="item" ref={Photo}/>
-              <br />
             </ReactCrop> :
             <AddPhotoAlternateIcon onClick={() => inputRef.current.click()} />
           }
@@ -146,7 +145,7 @@ export default function Sell() {
         <div>
           {completedCrop && 
             <CanvasPreview
-              src={Photo.current}
+              img={Photo.current}
               crop={completedCrop}
             />
           }

@@ -1,29 +1,39 @@
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
-export default function CanvasPreview({ src, crop }) {
-  const Ref = useRef();
-//   const [image, SetImage] = useState(null);
-//   const scaleX = src.naturalwidth / src.width;
-//   const scaleY = src.naturalheight / src.height;
-//   canvas.width = crop.width;
-//   canvas.height = crop.height;
-  const canvas = document.createElement('canvas');
-  const ctx = canvas.getContext('2d');
+export default function CanvasPreview({ img, crop }) {
+    const [image, SetImage] = useState(null);
+    useEffect(() => {
+      const drawImage = () => {
+        const canvas = document.querySelector("canvas");
+        const ctx = canvas.getContext('2d');
+        
+        if (!ctx) {
+          throw new Error('context not found');
+        }
 
-  if (!ctx) {
-    throw new Error('context not found');
-  }
-
-  ctx.drawImage(
-    src,
-    0,
-    0,
-  );
+        const scaleX = img.naturalWidth / img.width;
+        const scaleY = img.naturalHeight / img.height;
+        ctx.imageSmoothingQuality = 'high';
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.drawImage(
+          img,
+          crop.x * scaleX,
+          crop.y * scaleY,
+          crop.width * scaleX,
+          crop.height * scaleY,
+          0,
+          0,
+          crop.width,
+          crop.height
+        );
+      }
+      drawImage();
+    }, [crop])
 
   return (
     <div>
       <div>hi</div>
-      <canvas width={200} height={200}></canvas>
+      <canvas height={crop.height} width={crop.width}></canvas>
     </div>
   )
 }

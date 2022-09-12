@@ -13,7 +13,9 @@ export default function Sell() {
   const [Other, SetOther] = useState(null);
   const [src, setPhoto] = useState(null);
   const [crop, setCrop] = useState({
-    unit: '%',
+    unit: 'px',
+    width: 250,
+    height: 250
   })
   const [completedCrop, setCompletedCrop] = useState(null);
 
@@ -118,22 +120,28 @@ export default function Sell() {
       <br />
       <textarea placeholder='💬 Describe your item (optional)'/>
       <p><br />🖼️ Photo of your item (optional)<br /><br /></p>
-      <div>
+      <div className='media-list'>
+        {src ?
+          <ReactCrop
+            crop={crop}
+            aspect={1 / 1}
+            onChange={(c) => setCrop(c)}
+            onComplete={(c) => setCompletedCrop(c)}
+          >
+            <img src={src} alt="item" ref={Photo}/>
+          </ReactCrop> :
+          <div className='media-upload' onClick={() => inputRef.current.click()}>
+            <AddPhotoAlternateIcon />
+            Add Thumbnail
+          </div>
+        }
         <div>
-          {src ?
-            <ReactCrop
-              crop={crop}
-              minWidth={200}
-              minHeight={200}
-              maxWidth={200}
-              maxHeight={200}
-              onChange={(c) => setCrop(c)}
-              onComplete={(c) => setCompletedCrop(c)}
-            >
-              <img src={src} alt="item" ref={Photo}/>
-            </ReactCrop> :
-            <AddPhotoAlternateIcon onClick={() => inputRef.current.click()} />
-          }
+          {completedCrop && 
+            <CanvasPreview
+              img={Photo.current}
+              crop={completedCrop}
+              />
+            }
           <input 
             type="file"
             accept='image/*'
@@ -141,14 +149,6 @@ export default function Sell() {
             onChange={(e) => mediaHandler(e)}
             hidden
           />
-        </div>
-        <div>
-          {completedCrop && 
-            <CanvasPreview
-              img={Photo.current}
-              crop={completedCrop}
-            />
-          }
         </div>
       </div>
     </form>

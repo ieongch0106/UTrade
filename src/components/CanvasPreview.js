@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 
 export default function CanvasPreview({ img, crop }) {
-    const [image, SetImage] = useState(null);
     useEffect(() => {
       const drawImage = () => {
         const canvas = document.querySelector("canvas");
@@ -31,9 +30,9 @@ export default function CanvasPreview({ img, crop }) {
     }, [crop])
 
   return (
-    <div>
-      <div>hi</div>
-      <canvas height={crop.height} width={crop.width}></canvas>
-    </div>
+      <canvas 
+        width={crop.width}
+        height={crop.height}
+      />
   )
 }

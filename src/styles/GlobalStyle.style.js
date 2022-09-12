@@ -32,6 +32,10 @@ export const GlobalStyles = createGlobalStyle`
         border: none !important;
     }
 
+    canvas {
+        border: 1px solid var(--black);
+    }
+
     nav {
         display: flex;
         justify-content: space-between;
@@ -832,6 +836,24 @@ export const GlobalStyles = createGlobalStyle`
     .sell textarea:focus, .sell textarea:active {
         outline: none;
         border: 2px solid var(--primary);
+    }
+
+    .media-list {
+        display: flex;
+        flex-direction: column;
+        align-items: left;
+        gap: 20px;
+    }
+
+    .media-upload {
+        font-size: 25px;
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: var(--grey);
+        border: 3px dashed var(--lightgrey);
+        padding: 4em;
     }
 
 `

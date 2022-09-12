@@ -3,14 +3,19 @@ import { Input } from '../styles/Input.style'
 import Select from 'react-select';
 import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
 import { useRef } from 'react';
+import ReactCrop from 'react-image-crop';
+import 'react-image-crop/dist/ReactCrop.css';
+import CanvasPreview from '../components/CanvasPreview';
 
 export default function Sell() {
-  const [ Other, SetOther ] = useState(null);
-  const [ Photos, SetPhotos ] = useState(10);
+  const Photo = useRef();
   const inputRef = useRef();
-  const locations = [
-    { value: '' }
-  ]
+  const [Other, SetOther] = useState(null);
+  const [src, setPhoto] = useState(null);
+  const [crop, setCrop] = useState({
+    unit: '%',
+  })
+  const [completedCrop, setCompletedCrop] = useState(null);
 
   const categories = [
     { value: 'clothing-shoes-accessories', label: '👕 👠 👜 Clothing, Shoes & Accessories' },
@@ -51,7 +56,7 @@ export default function Sell() {
 
   const mediaHandler = (e) => {
     for (const file of (e.target.files)) {
-
+      setPhoto(URL.createObjectURL(file));
     }
   }
 
@@ -112,32 +117,41 @@ export default function Sell() {
       {Other}
       <br />
       <textarea placeholder='💬 Describe your item (optional)'/>
-      <p><br />🖼️ Photos of your item (optional)<br /><br /></p>
-      <div className='media-list'>
+      <p><br />🖼️ Photo of your item (optional)<br /><br /></p>
+      <div>
         <div>
-          a
+          {src ?
+            <ReactCrop
+              crop={crop}
+              minWidth={200}
+              minHeight={200}
+              maxWidth={200}
+              maxHeight={200}
+              onChange={(c) => setCrop(c)}
+              onComplete={(c) => setCompletedCrop(c)}
+              >
+              <img src={src} alt="item" ref={Photo}/>
+              <br />
+            </ReactCrop> :
+            <AddPhotoAlternateIcon onClick={() => inputRef.current.click()} />
+          }
+          <input 
+            type="file"
+            accept='image/*'
+            ref={inputRef}
+            onChange={(e) => mediaHandler(e)}
+            hidden
+          />
         </div>
         <div>
-          b
-        </div>
-        <div>
-          c
-        </div>
-        <div>
-          d
-        </div>
-        <div>
-          f
+          {completedCrop && 
+            <CanvasPreview
+              src={Photo.current}
+              crop={completedCrop}
+            />
+          }
         </div>
       </div>
-      {/* <div className='media-list'>
-        <div onClick={()=> inputRef.current.click()}>
-          <AddPhotoAlternateIcon sx={{fontSize: '60px'}}/>
-          <br />
-          + {Photos} Photos
-          <input type='file' ref={inputRef} accept="image/*" multiple onChange={(e) => mediaHandler(e)}  hidden/>
-        </div>
-      </div> */}
     </form>
   )
 }

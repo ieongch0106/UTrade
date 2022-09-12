@@ -813,7 +813,7 @@ export const GlobalStyles = createGlobalStyle`
         font-size: medium;
         background-color: lightgrey;
         height: max-content;
-        width: 50vw;
+        width: 55vw;
         padding: 60px 80px;
         text-align: left;
         margin: auto;
@@ -834,23 +834,4 @@ export const GlobalStyles = createGlobalStyle`
         border: 2px solid var(--primary);
     }
 
-    /* .media-list div {
-        text-align: center;
-        width: max-content;
-        padding: 15px 20px 25px;
-    } */
-
-    .media-list {
-        width: 100%;
-        display: flex;
-        gap: 0.5%;
-    }
-    
-    .media-list div {
-        width: 19.6%;
-        color: var(--lightgrey);
-        border: 5px solid var(--softgrey);
-        border-style: dashed;
-    }
-    
 `

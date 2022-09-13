@@ -12,7 +12,7 @@ const variables = css`
         --red: #f52525;
         --green: #1DBF73;
         --lightgrey: rgba(128, 128, 128, 0.9);
-        --softgrey: rgba(128, 128, 128, 0.65);
+        --softgrey: rgba(128, 128, 128, 0.4);
     }
 `
 

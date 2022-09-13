@@ -6,6 +6,8 @@ import { useRef } from 'react';
 import ReactCrop from 'react-image-crop';
 import 'react-image-crop/dist/ReactCrop.css';
 import CanvasPreview from '../components/CanvasPreview';
+import { Button } from '../styles/Button.style';
+import Modal from '../components/modal';
 
 export default function Sell() {
   const Photo = useRef();
@@ -84,8 +86,8 @@ export default function Sell() {
   }
 
   return (
-    <form className='sell'>
-      <h2 className='text-center p-3'>Item For Sale</h2>
+    <form className='sell mt-4 mb-4'>
+      <h2 className='text-center pb-5'>Item For Sale</h2>
       <Input sty="sell" placeholder='🎁 What are you selling?' />
       <br /><br />
       <Input type="text" sty="sell" placeholder='💲 Price' />
@@ -105,7 +107,7 @@ export default function Sell() {
             primary: 'rgba(128, 0, 0, 0.8)'
           }
         })}
-      />
+        />
       {OtherL}
       <br />
       <Select
@@ -122,7 +124,7 @@ export default function Sell() {
             primary: 'rgba(128, 0, 0, 0.8)'
           }
         })}
-      />
+        />
       <br />
       <Select
         options={conditions}
@@ -138,33 +140,40 @@ export default function Sell() {
             primary: 'rgba(128, 0, 0, 0.8)'
           }
         })}
-      />
+        />
       {Other}
       <br />
       <textarea placeholder='💬 Describe your item (optional)'/>
       <p><br />🖼️ Photo of your item (optional)<br /><br /></p>
       <div className='media-list'>
-        {src ?
-          <ReactCrop
-            crop={crop}
-            aspect={1 / 1}
-            onChange={(c) => setCrop(c)}
-            onComplete={(c) => setCompletedCrop(c)}
-          >
-            <img src={src} alt="item" ref={Photo}/>
-          </ReactCrop> :
-          <div className='media-upload' onClick={() => inputRef.current.click()}>
-            <AddPhotoAlternateIcon />
-            Add Thumbnail
-          </div>
-        }
         <div>
+          {src ?
+            <ReactCrop
+              crop={crop}
+              aspect={1 / 1}
+              onChange={(c) => setCrop(c)}
+              onComplete={(c) => setCompletedCrop(c)}
+            >
+              <img src={src} alt="item" ref={Photo}/>
+            </ReactCrop> :
+            <div className='media-upload' onClick={() => inputRef.current.click()}>
+              <AddPhotoAlternateIcon />
+              Add Thumbnail
+            </div>
+          }
           {completedCrop && 
-            <CanvasPreview
-              img={Photo.current}
-              crop={completedCrop}
-              />
-            }
+            <div>
+              <CanvasPreview
+                img={Photo.current}
+                crop={completedCrop}
+                />
+              <br />
+            </div>
+          }
+        </div>
+        <div className='d-flex gap-3 justify-content-center mt-4'>
+          {src && <Button sty="link" bg="transparent" color="primary">Choose another image</Button>}
+          <Button color="white">Continue</Button><br />
           <input 
             type="file"
             accept='image/*'
@@ -172,6 +181,7 @@ export default function Sell() {
             onChange={(e) => mediaHandler(e)}
             hidden
           />
+          {/* <Modal open={IsOpen} onClose={() => setIsOpen(false)}>{Content}</Modal> */}
         </div>
       </div>
     </form>

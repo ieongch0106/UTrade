@@ -6,6 +6,7 @@ const btnStyNav = `
     color: var(--black);
     border: 1px solid var(--black);
     border-radius: 0.25em;
+    width: inherit;
 `
 
 const btnStySearch = `

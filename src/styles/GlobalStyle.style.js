@@ -813,6 +813,48 @@ export const GlobalStyles = createGlobalStyle`
         font-size: 28px;
     }
 
+    /* buy */
+    .container {
+        width: 100%;
+        padding: 20px;
+        margin-right: auto;
+        margin-left: auto;
+    }
+
+    .sidebar {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        width: 260px;
+        float: left;
+    }
+
+    .sidebar ul {
+        display: flex;
+        flex-direction: column;
+        font-size: 14px;
+        list-style: none;
+    }
+    
+    .sidebar h3 {
+        padding: 8px 0;
+    }
+    
+    .sidebar ul:first-child {
+        gap: 12px;
+        padding-bottom: 35px;
+        border-bottom: 1px solid var(--softgrey);
+    }
+    
+    .sidebar ul:nth-last-child(-n+2) li {
+        margin-left: -12px;
+        margin-bottom: -8px;
+    }
+    
+    .section {
+    }
+
+    /* sell */
     .sell {
         font-size: medium;
         background-color: lightgrey;
@@ -848,10 +890,7 @@ export const GlobalStyles = createGlobalStyle`
     }
 
     .media-list {
-        display: flex;
-        flex-direction: column;
-        align-items: left;
-        gap: 20px;
+        text-align: center;
     }
 
     .media-upload {
@@ -862,6 +901,6 @@ export const GlobalStyles = createGlobalStyle`
         align-items: center;
         color: var(--grey);
         border: 3px dashed var(--lightgrey);
-        padding: 4em;
+        padding: 4em 10em;
     }
 `

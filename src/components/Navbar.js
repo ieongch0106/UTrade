@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { NavLink } from 'react-router-dom'
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
@@ -10,12 +10,14 @@ import Register from './modal/Register';
 import FaceIcon from '@mui/icons-material/Face';
 import BookmarkIcon from '@mui/icons-material/Bookmark';
 import LogoutIcon from '@mui/icons-material/Logout';
+import SearchBar from './SearchBar';
 
 export default function Navbar({userloggedIn}) {
   const [ IsOpen, setIsOpen ] = useState(false);
   const [ DropdownOpen, setDropdownOpen ] = useState(false); 
   const [ Content, SetContent ] = useState(<></>);
   const {Auth} = useContext(AuthContext);
+
   const ModalHandler = (e) => {
     setIsOpen(true);
     e.target.id === "login_button" ? SetContent(<Login />) : SetContent(<Register />);
@@ -37,6 +39,7 @@ export default function Navbar({userloggedIn}) {
                 <NavLink to='/about'>About</NavLink>
             </li>
         </ul>
+        <ul><SearchBar /></ul>
         {!userloggedIn ? (
             <ul>
                 <li>

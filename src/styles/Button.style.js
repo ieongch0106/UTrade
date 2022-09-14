@@ -10,7 +10,7 @@ const btnStyNav = `
 `
 
 const btnStySearch = `
-    height: 45px;
+    height: 40px;
     width: 50px;
     border-top-right-radius: 0.3rem;
     border-bottom-right-radius: 0.3rem;

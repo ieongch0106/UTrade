@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const inputStySearch = `
-    height: 45px;
+    height: 40px;
     width: 45vw;
     font-size: 18px;
     padding-left: 18px;

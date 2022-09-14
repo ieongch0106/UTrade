@@ -56,6 +56,15 @@ export const GlobalStyles = createGlobalStyle`
         height: 25px;
     }
 
+    nav ul:nth-child(2) div {
+        width: 50%;
+        gap: 0;
+    }
+
+    nav ul:nth-child(2) div button {
+        padding: 0 0.5rem;
+    }
+
     nav ul span {
         color: var(--white);
         height: 25px;
@@ -825,8 +834,11 @@ export const GlobalStyles = createGlobalStyle`
         display: flex;
         flex-direction: column;
         gap: 16px;
+        overflow-y: scroll;
+        max-height: 88vh;
         width: 260px;
         float: left;
+        padding-right: 15px;
     }
 
     .sidebar ul {
@@ -850,8 +862,42 @@ export const GlobalStyles = createGlobalStyle`
         margin-left: -12px;
         margin-bottom: -8px;
     }
+
+    .label {
+        font: inherit !important;
+    }
     
+    .label:hover {
+        text-decoration: underline;
+    }
+
     .section {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 48px;
+        font-size: 16px;
+        padding-left: 20px;
+    }
+    
+    .section div {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+    }
+
+    .section img {
+        width: 200px;
+        height: 200px;
+        border: 1px solid black;
+        border-radius: 0.3rem;
+    }
+
+    .section div div:nth-child(2) {
+        font-weight: 700;
+    }
+
+    .section div div:nth-child(4) {
+        color: rgba(0, 0, 0, 0.8);
     }
 
     /* sell */

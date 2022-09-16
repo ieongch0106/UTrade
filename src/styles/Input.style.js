@@ -3,7 +3,7 @@ import styled from "styled-components";
 const inputStySearch = `
     height: 40px;
     width: 45vw;
-    font-size: 18px;
+    font-size: 16px;
     padding-left: 18px;
     border-top-left-radius: 0.3rem;
     border-bottom-left-radius: 0.3rem;
@@ -54,5 +54,5 @@ export const Input = styled.input`
         `background-color: var(--white);`
     }
     color: var(--${props => props.color});
-    font-family: 'Segoe UI';
+    font-family: inherit !important;
 `

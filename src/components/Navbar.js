@@ -10,7 +10,6 @@ import Register from './modal/Register';
 import FaceIcon from '@mui/icons-material/Face';
 import BookmarkIcon from '@mui/icons-material/Bookmark';
 import LogoutIcon from '@mui/icons-material/Logout';
-import SearchBar from './SearchBar';
 
 export default function Navbar({userloggedIn}) {
   const [ IsOpen, setIsOpen ] = useState(false);
@@ -39,7 +38,6 @@ export default function Navbar({userloggedIn}) {
                 <NavLink to='/about'>About</NavLink>
             </li>
         </ul>
-        <ul><SearchBar /></ul>
         {!userloggedIn ? (
             <ul>
                 <li>

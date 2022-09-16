@@ -56,15 +56,6 @@ export const GlobalStyles = createGlobalStyle`
         height: 25px;
     }
 
-    nav ul:nth-child(2) div {
-        width: 50%;
-        gap: 0;
-    }
-
-    nav ul:nth-child(2) div button {
-        padding: 0 0.5rem;
-    }
-
     nav ul span {
         color: var(--white);
         height: 25px;
@@ -830,6 +821,27 @@ export const GlobalStyles = createGlobalStyle`
         margin-left: auto;
     }
 
+    .search-bar {
+        position: fixed;
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        top: -2px;
+        background-color: transparent;
+        padding: 0.5rem 0 0.5rem;
+        transition: transform 1.5s ease-in-out;
+        transition: background-color 0.75s ease-in-out;
+        pointer-events: none;
+    }
+
+    .search-bar input, button {
+        pointer-events: all;
+    }
+
+    .search-bar button {
+        padding: 0 0.5rem;
+    }
+
     .sidebar {
         display: flex;
         flex-direction: column;
@@ -949,4 +961,32 @@ export const GlobalStyles = createGlobalStyle`
         border: 3px dashed var(--lightgrey);
         padding: 4em 10em;
     }
+
+    /* animations */
+    .slide-up {
+        animation: SlideUp 0.5s linear forwards;
+    }
+
+    .slide-down {
+        animation: SlideDown 0.5s linear forwards;
+    }
+
+    @keyframes SlideDown {
+        from {
+            transform: translateY(-65px);
+        }
+        to {
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes SlideUp {
+        from {
+            transform: translateY(0);
+        }
+        to {
+            transform: translateY(-65px);
+        }
+    }
+
 `

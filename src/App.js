@@ -8,6 +8,7 @@ import { GlobalStyles } from './styles/GlobalStyle.style';
 import { useState } from 'react';
 import Sell from './pages/Sell';
 import About from './pages/About';
+import Post from './components/Post';
 
 function App() {
   const [ Auth, setAuth ] = useState('');
@@ -19,10 +20,11 @@ function App() {
         {!Auth? <Navbar />: <Navbar userloggedIn={true}/>}
         <Routes>
           <Route exact path='/' element={<Home />} />
-          <Route path='/buy' element={<Buy/>} />
+          <Route path='/buy' element={<Buy />} />
+          <Route path='/post' element={<Post />} />
           {/* <Route path='/sell' element={<PrivateRoute><Sell/></PrivateRoute>} /> */}
-          <Route path='/sell' element={<Sell/>} />
-          <Route path='/about' element={<About/>} />
+          <Route path='/sell' element={<Sell />} />
+          <Route path='/about' element={<About />} />
         </Routes>
       </Router>
     </AuthContext.Provider>

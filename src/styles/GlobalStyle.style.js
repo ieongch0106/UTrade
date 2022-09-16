@@ -895,6 +895,7 @@ export const GlobalStyles = createGlobalStyle`
         display: flex;
         flex-direction: column;
         gap: 4px;
+        cursor: pointer;
     }
 
     .section img {
@@ -903,13 +904,37 @@ export const GlobalStyles = createGlobalStyle`
         border: 1px solid black;
         border-radius: 0.3rem;
     }
-
-    .section div div:nth-child(2) {
-        font-weight: 700;
+    
+    .post-title:hover {
+        filter: brightness(0.8);
+        text-decoration: underline;
     }
 
     .section div div:nth-child(4) {
         color: rgba(0, 0, 0, 0.8);
+    }
+    
+    /* post */
+    .post {
+        display: flex;
+        flex-wrap: nowrap;
+        width: 100%;
+    }
+
+    .post-info {
+        width: 70%;
+    }
+    
+    .post-image {
+        height: 500px;
+        border: 1px solid black;
+    }
+
+    .seller-info {
+        width: 30%;
+        height: max-content;
+        padding: 1rem;
+        border: 1px solid black;
     }
 
     /* sell */

@@ -1,8 +1,11 @@
 import { Checkbox, FormControlLabel, FormGroup, Typography } from '@mui/material';
 import React, { useEffect, useRef, useState } from 'react'
+import { useNavigate } from 'react-router-dom';
+import Post from '../components/Post';
 import SearchBar from '../components/SearchBar';
 
 export default function Buy() {
+  const navigate = useNavigate();
   const [scrollUp, setScrollUp] = useState(null);
   const searchRef = useRef();
   
@@ -64,8 +67,9 @@ export default function Buy() {
     // fetch items from database
   }, []);
   
-  const postHandler = () => {
-    
+  const postHandler = (item) => {
+    navigate('/post', {
+    })
   }
 
   return (
@@ -125,9 +129,11 @@ export default function Buy() {
         <div className='section'>
           {items.map((item, index) => {
             return (
-              <div key={index} onClick={() => postHandler()}>
-                <img src='' alt={item.name}/>
-                <div>{item.name}</div>
+              <div key={index} onClick={() => postHandler(item)}>
+                <div className='post-title'>
+                  <img src='' alt={item.name}/>
+                  <h4>{item.name}</h4>
+                </div>
                 <div>{item.price}</div>
                 <div>{item.location}</div>
               </div>

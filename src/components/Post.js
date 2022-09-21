@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react'
+import { Button } from '../styles/Button.style';
 
 export default function Post({ id }) {
     
@@ -25,9 +26,10 @@ export default function Post({ id }) {
                 <br />
                 condition:
                 <br />
-                Ask
+                phone
                 <br />
-                Save Share
+                <Button color="white">Save</Button> 
+                Share
             </div>
         </div>
     </div>

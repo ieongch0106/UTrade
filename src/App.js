@@ -21,7 +21,7 @@ function App() {
         <Routes>
           <Route exact path='/' element={<Home />} />
           <Route path='/buy' element={<Buy />} />
-          <Route path='/post' element={<Post />} />
+          <Route path='/post/:id' element={<Post />} />
           {/* <Route path='/sell' element={<PrivateRoute><Sell/></PrivateRoute>} /> */}
           <Route path='/sell' element={<Sell />} />
           <Route path='/about' element={<About />} />

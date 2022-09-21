@@ -10,24 +10,24 @@ export default function Buy() {
   const searchRef = useRef();
   
   const items = [
-    {image: 'image1', name: 'item1', price: '$100', location: 'On Campus'},
-    {image: 'image2', name: 'item2', price: '$250', location: 'Sunderland, MA'},
-    {image: 'image3', name: 'item3', price: '$8000', location: 'Amherst, MA'},
-    {image: 'image4', name: 'item4', price: '$10,000', location: 'South Deerfield, MA'},
-    {image: 'image5', name: 'item5', price: '$420', location: 'Springfield, MA'},
-    {image: 'image6', name: 'item6', price: '$69', location: 'Boston, MA'},
-    {image: 'image7', name: 'item7', price: '$25', location: 'Cambridge, MA'},
-    {image: 'image8', name: 'item8', price: '$111', location: 'Mountain View, CA'},
-    {image: 'image9', name: 'item9', price: '$23', location: 'Kirkland, WA'},
-    {image: 'image10', name: 'item10', price: '$80', location: 'Seattle, WA'},
-    {image: 'image11', name: 'item11', price: '$555', location: 'Bellevue, WA'},
-    {image: 'image12', name: 'item12', price: '$90', location: 'Austin, TX'},
-    {image: 'image13', name: 'item13', price: '$600', location: 'Honolulu, HI'},
-    {image: 'image14', name: 'item14', price: '$480', location: 'Methuen, MA'},
+    {id: 1, image: 'image1', name: 'item1', price: '$100', location: 'On Campus'},
+    {id: 2, image: 'image2', name: 'item2', price: '$250', location: 'Sunderland, MA'},
+    {id: 3, image: 'image3', name: 'item3', price: '$8000', location: 'Amherst, MA'},
+    {id: 4, image: 'image4', name: 'item4', price: '$10,000', location: 'South Deerfield, MA'},
+    {id: 5, image: 'image5', name: 'item5', price: '$420', location: 'Springfield, MA'},
+    {id: 6, image: 'image6', name: 'item6', price: '$69', location: 'Boston, MA'},
+    {id: 7, image: 'image7', name: 'item7', price: '$25', location: 'Cambridge, MA'},
+    {id: 8, image: 'image8', name: 'item8', price: '$111', location: 'Mountain View, CA'},
+    {id: 9, image: 'image9', name: 'item9', price: '$23', location: 'Kirkland, WA'},
+    {id: 10, image: 'image10', name: 'item10', price: '$80', location: 'Seattle, WA'},
+    {id: 11, image: 'image11', name: 'item11', price: '$555', location: 'Bellevue, WA'},
+    {id: 12, image: 'image12', name: 'item12', price: '$90', location: 'Austin, TX'},
+    {id: 13, image: 'image13', name: 'item13', price: '$600', location: 'Honolulu, HI'},
+    {id: 14, image: 'image14', name: 'item14', price: '$480', location: 'Methuen, MA'},
   ]
 
   useEffect(() => {
-    const threshold = 50;
+    const threshold = 20;
     let lastScrollY = window.pageYOffset;
     let ticking = false;
   
@@ -68,7 +68,7 @@ export default function Buy() {
   }, []);
   
   const postHandler = (item) => {
-    navigate('/post', {
+    navigate(`/post/${item.id}`, {
     })
   }
 

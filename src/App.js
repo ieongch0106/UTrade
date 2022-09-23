@@ -9,6 +9,7 @@ import { useEffect, useState } from 'react';
 import Sell from './pages/Sell';
 import About from './pages/About';
 import Post from './components/Post';
+import Login from './components/modal/Login';
 
 function App() {
   const [ Auth, setAuth ] = useState('');
@@ -28,9 +29,9 @@ function App() {
           <Route exact path='/' element={<Home />} />
           <Route path='/buy' element={<Buy />} />
           <Route path='/post/:id' element={<Post />} />
-          {/* <Route path='/sell' element={<PrivateRoute><Sell/></PrivateRoute>} /> */}
-          <Route path='/sell' element={<Sell />} />
+          <Route path='/sell' element={<PrivateRoute><Sell/></PrivateRoute>} />
           <Route path='/about' element={<About />} />
+          <Route path='/login' element={<Login />} /> 
         </Routes>
       </Router>
     </AuthContext.Provider>

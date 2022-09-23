@@ -15,7 +15,7 @@ export default function Navbar({userloggedIn}) {
   const [ IsOpen, setIsOpen ] = useState(false);
   const [ DropdownOpen, setDropdownOpen ] = useState(false); 
   const [ Content, SetContent ] = useState(<></>);
-  const {Auth} = useContext(AuthContext);
+  let {Auth} = useContext(AuthContext);
 
   const ModalHandler = (e) => {
     setIsOpen(true);
@@ -57,7 +57,7 @@ export default function Navbar({userloggedIn}) {
                     <ul className={DropdownOpen ? "dropdown-content-open" : "hidden"}>
                         <li><FaceIcon sx={{color: 'var(--primary)'}}/>Account</li>
                         <li><BookmarkIcon sx={{color: 'var(--primary)'}} />Your Watchlist</li>
-                        <li><LogoutIcon sx={{color: 'var(--primary)'}} />Log out</li>
+                        <li onClick={() => {userloggedIn = false; localStorage.clear(); window.location.reload()}}><LogoutIcon sx={{color: 'var(--primary)'}} />Log out</li>
                     </ul>
                 </ul>
             </>

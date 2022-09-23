@@ -722,7 +722,7 @@ export const GlobalStyles = createGlobalStyle`
         display: block;
         position: absolute;
         margin-top: 180px;
-        margin-left: -60px;
+        right: 0;
         background-color: var(--white);
         min-width: 180px;
         box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);

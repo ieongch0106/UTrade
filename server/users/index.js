@@ -29,7 +29,7 @@ app.post("/login", async (req, res) => {
         const { username, password } = req.body;
         const user = await db.findOne({username: username});
         if (user) {
-            res.status(200).send(user);
+            res.status(200).send(user.fullname);
         } else {
             res.status(404).send({msg: 'User not found'});
         }

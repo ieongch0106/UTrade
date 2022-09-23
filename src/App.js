@@ -5,13 +5,19 @@ import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import Buy from './pages/Buy';
 import { GlobalStyles } from './styles/GlobalStyle.style';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Sell from './pages/Sell';
 import About from './pages/About';
 import Post from './components/Post';
 
 function App() {
   const [ Auth, setAuth ] = useState('');
+
+  useEffect(() => {
+    if (localStorage.getItem('token')) {
+      setAuth({user: JSON.parse(localStorage.getItem('token')).name});    
+    }
+  }, []);
 
   return (
     <AuthContext.Provider value={{Auth, setAuth}}>

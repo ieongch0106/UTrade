@@ -5,9 +5,10 @@ import axios from 'axios';
 import { Input } from '../../styles/Input.style';
 import { Button } from '../../styles/Button.style';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
-import Register from './Register';
+import { CircularProgress } from '@mui/material';
 
 export default function Login() {
+    const [loading, setLoading] = useState(false); 
     const [Success, setSuccess] = useState(false);
     const {setAuth}  = useContext(AuthContext);
 
@@ -18,21 +19,24 @@ export default function Login() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+
+        setLoading(true);
         const { username, password, remember } = e.target;
         const user = username.value;
         const pwd = password.value
         try {
-            const data = JSON.stringify({username: user, password: pwd});
-            const response = await axios.post('http://localhost:3001/login', data, {
-                headers: {
-                    'Content-Type': 'application/json',
-                }
-            });
-            console.log(JSON.stringify(response.data));
-            setSuccess(true);
-            setAuth({user, pwd})
+            const data = {username: user, password: pwd};
+            await axios.post('http://localhost:3001/login', data);
+            setTimeout(() => {
+                setLoading(false);
+                setSuccess(true)
+                setAuth({user, pwd})
+            }, 2000);
         } catch (err) {
             console.log(err);
+            setTimeout(() => {
+                setLoading(false);
+            }, 1000);
         }
     }
 
@@ -43,7 +47,7 @@ export default function Login() {
               <h2>LOGIN SUCCESSFUL</h2>
               <br />
               <CheckCircleIcon sx={{fontSize: "100px", color: "#34b233"}}/>
-              <Navigate to="/"/>
+              <Button onClick={() => <Navigate to="/"/>}>home</Button>
             </div>
         ) : (
             <div className="text-center">
@@ -71,7 +75,7 @@ export default function Login() {
                         required
                     />
                     <br />
-                    <Button color="white" sty="modal">Continue</Button> <br />
+                    <Button color="white" sty="modal">{loading ? <CircularProgress color="grey" size={40}/> : 'Continue'}</Button> <br />
                     <div className="d-flex justify-content-between mt-3 mb-3">
                         <div>
                             <input type="checkbox" name="remember"/>

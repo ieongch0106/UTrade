@@ -739,11 +739,11 @@ export const GlobalStyles = createGlobalStyle`
 
     .dropdown-content-open li:hover {
         border: none;
-        background-color: var(--lightgrey);
+        background-color: rgb(234, 234, 234);
     }
     
     .dropdown-content-open li:focus, .dropdown-content-open li:active {
-        background-color: var(--grey);
+        background-color: rgb(192, 192, 192);
     }
 
     .dropdown-content-open a {

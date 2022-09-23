@@ -62,4 +62,12 @@ export const Button = styled.button`
         transform: scale(0.98);
         filter: brightness(0.7);
     }
+    ${props => props.disabled &&
+        `
+            background: rgba(128, 0, 0, 0.55);
+            color: #ccc;
+            cursor: no-drop;
+
+        `
+    }
 `

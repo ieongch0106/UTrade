@@ -5,8 +5,10 @@ import React, { useEffect, useRef, useState } from 'react'
 import { Button } from '../../styles/Button.style'
 import { Input } from '../../styles/Input.style'
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import { CircularProgress } from '@mui/material';
 
 export default function Register() {
+  const [loading, setLoading] = useState(false); 
   const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
   const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
   const PHONE_REGEX = /^(\+\d{1,2}\s?)?1?\-?\.?\s?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$/;
@@ -52,7 +54,6 @@ export default function Register() {
     
     useEffect(() => {
       setValidFullname(fullname);
-      console.log(fullname)
     }, [fullname])
 
     useEffect(() => {
@@ -65,36 +66,26 @@ export default function Register() {
     }, [phone])
 
     useEffect(() => {
-      setValidEmail(EMAIL_REGEX.test(email));
-    }, [email])
-
-    useEffect(() => {
         setErrMsg('');
     }, [user, pwd, matchPwd, phone])
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     
-    const v1 = USER_REGEX.test(user);
-    const v2 = PWD_REGEX.test(pwd);
-    const v3 = PHONE_REGEX.test(phone);
-    const v4 = EMAIL_REGEX.test(email);
-
-    if (!v1 || !v2 || !v3 || !v4) {
-        setErrMsg("Invalid Entry");
-        return;
-    }
+    setLoading(true);
+    const { username, fullname, email, password, tel } = e.target;
     try {
-      const data = JSON.stringify({ username: user, password: pwd, first_name: fullname, last_name: phone, email: email });
-      const response = await axios.post('http://localhost:3001/register', data, {
-        headers: {
-          'Content-Type': 'application/json',
-        }
-      });
-      console.log(response);
-      setSuccess(true);
+      const data = { username: username.value, fullname: fullname.value, email: email.value, password: password.value, tel: tel.value };
+      await axios.post('http://localhost:3001/register', data);
+        setTimeout(() => {
+            setLoading(false);
+            setSuccess(true)
+        }, 2000);
     } catch (err) {
         errRef.current.focus();
+        setTimeout(() => {
+            setLoading(false);
+        }, 1000);
     }
   }
 
@@ -162,7 +153,10 @@ export default function Register() {
                         type="email"
                         name="email"
                         sty="modal"
-                        onChange={(e) => setEmail(e.target.value)}
+                        onChange={(e) => {
+                            setEmail(e.target.value)
+                            setValidEmail(EMAIL_REGEX.test(email))
+                        }}
                         placeholder="Enter your email"
                         autoComplete='off'
                         onFocus={() => setEmailFocus(true)}
@@ -226,6 +220,7 @@ export default function Register() {
                         onBlur={() => setPhoneFocus(false)}
                         required
                     />
+                    <FontAwesomeIcon icon={faCheck} className={validPhone ? "valid" : "hide"} />
                     <p className={phoneFocus && phone && !validPhone ? "instructions" : "offscreen"}>
                         <FontAwesomeIcon icon={faInfoCircle} />
                         Enter Phone number in proper format<br />
@@ -238,7 +233,7 @@ export default function Register() {
                             I agree the terms of use
                         </label>
                     </div>
-                    <Button color="white" sty="modal" disabled={!validName || !validPwd || !validMatch || !validPhone ? true : false}>Join</Button> 
+                    <Button color="white" sty="modal" disabled={!validName || !validPwd || !validMatch || !validPhone ? true : false}>{loading ? <CircularProgress color="grey" size={40}/> : 'Join'}</Button> 
                     <br /><br />
                 </form>
                 <hr />

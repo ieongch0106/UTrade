@@ -51,7 +51,6 @@ export default function Navbar({userloggedIn}) {
                 <ul>
                     <div onClick={() => setDropdownOpen(!DropdownOpen)}>
                         <AccountCircleIcon sx={{fontSize: 'x-large'}}/>
-                        lool
                         {Auth.user}
                         <ArrowDropDownIcon sx={{marginLeft: '-5px'}}/>
                     </div>

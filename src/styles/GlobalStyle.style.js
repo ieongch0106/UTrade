@@ -198,6 +198,7 @@ export const GlobalStyles = createGlobalStyle`
 
     /* buy */
     .container {
+        all: unset;
         width: 100%;
         padding: 20px;
         margin-right: auto;
@@ -225,15 +226,30 @@ export const GlobalStyles = createGlobalStyle`
         padding: 0 0.5rem;
     }
 
+    .logo {
+        position: fixed;
+        margin-top: -55px;
+        padding: 10px 15px 10px;
+        text-align: center;
+        width: 260px;
+        background: var(--black);
+        z-index: -1;
+    }
+
+    .logo img {
+        width: 60%;
+    }
+
     .sidebar {
+        position: fixed;
         display: flex;
         flex-direction: column;
         gap: 16px;
         overflow-y: scroll;
-        max-height: 88vh;
-        width: 260px;
+        max-height: calc(100vh - 55px);
+        border-bottom: 1px solid var(--softgrey);
         float: left;
-        padding-right: 15px;
+        padding: 18px;
     }
 
     .sidebar ul {
@@ -241,10 +257,11 @@ export const GlobalStyles = createGlobalStyle`
         flex-direction: column;
         font-size: 14px;
         list-style: none;
+        padding: 0;
     }
     
-    .sidebar h3 {
-        padding: 8px 0;
+    .sidebar h5 {
+        padding-bottom: 8px;
     }
     
     .sidebar ul:first-child {
@@ -267,11 +284,14 @@ export const GlobalStyles = createGlobalStyle`
     }
 
     .section {
+        background: grey;
         display: grid;
         grid-template-columns: repeat(5, 1fr);
-        gap: 48px;
+        gap: 46px;
         font-size: 16px;
-        padding-left: 20px;
+        /* margin-left: 280px; */
+        float: right;
+        margin-right: 20px;
     }
     
     .section div {
@@ -288,6 +308,11 @@ export const GlobalStyles = createGlobalStyle`
         border-radius: 0.3rem;
     }
     
+    .post-title {
+        display: inline-block;
+        word-break: break-word;
+    }
+
     .post-title:hover {
         filter: brightness(0.8);
         text-decoration: underline;

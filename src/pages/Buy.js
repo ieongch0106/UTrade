@@ -1,8 +1,9 @@
 import { Checkbox, FormControlLabel, FormGroup, Typography } from '@mui/material';
 import React, { useEffect, useRef, useState } from 'react'
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Post from '../components/Post';
 import SearchBar from '../components/SearchBar';
+import logo from '../images/UTrade Transparent.png';
 
 export default function Buy() {
   const navigate = useNavigate();
@@ -75,10 +76,13 @@ export default function Buy() {
   return (
     <>
       <div className='search-bar' ref={searchRef}><SearchBar width="26%"/></div>
+      <div className='logo'>
+        <Link to="/"><img src={logo} alt="logo" /></Link>
+      </div>
       <div className='container'>
         <div className='sidebar'>
           <ul>
-            <h3>CATEGORIES</h3>
+            <h5>CATEGORIES</h5>
             <li>Clothing, Shoes & Accessories (2)</li>
             <li>Home & Garden</li>
             <li>Electronics</li>
@@ -91,11 +95,11 @@ export default function Buy() {
             <li>Miscellaneous</li>
           </ul>
           <ul>
-            <h3>PRICE</h3>
+            <h5>PRICE</h5>
             <li><input type="range" /></li>
           </ul>
           <ul>
-            <h3>LOCATION</h3>
+            <h5>LOCATION</h5>
             <FormGroup>
               <FormControlLabel
                 control={<Checkbox />}
@@ -106,7 +110,7 @@ export default function Buy() {
             </FormGroup>
           </ul>
           <ul>
-            <h3>CONDITION</h3>
+            <h5>CONDITION</h5>
             <FormGroup>
               <FormControlLabel
                 control={<Checkbox />}
@@ -132,7 +136,7 @@ export default function Buy() {
               <div key={index} onClick={() => postHandler(item)}>
                 <div className='post-title'>
                   <img src='' alt={item.name}/>
-                  <h4>{item.name}</h4>
+                  <h6>{item.name}</h6>
                 </div>
                 <div>{item.price}</div>
                 <div>{item.location}</div>

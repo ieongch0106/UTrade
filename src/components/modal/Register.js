@@ -101,8 +101,7 @@ export default function Register() {
             </div>
             ) : (
                 <div className="text-center">
-                <h1>Join BlogSpot</h1>
-                <br />
+                <h2>Join UTrade</h2>
                 <hr />
                 <form onSubmit={handleSubmit}>
                     <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>

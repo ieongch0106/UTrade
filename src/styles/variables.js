@@ -3,6 +3,7 @@ import { css } from "styled-components";
 const variables = css`
     :root {
         --primary: maroon;
+        --secondary: black;
         --black: #171515;
         --white: #FFFFFF;
         --dark: #46494d;

@@ -59,7 +59,6 @@ export default function Login() {
         ) : (
             <div className="text-center">
                 <h2>Sign In to UTrade</h2>
-                <br />
                 <hr />
                 <form onSubmit={handleSubmit}>
                     <Input

@@ -18,6 +18,10 @@ export const GlobalStyles = createGlobalStyle`
         text-decoration: none;
     }
 
+    a:hover {
+        color: inherit;
+    }
+
     body, html {
         /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
         font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
@@ -83,6 +87,22 @@ export const GlobalStyles = createGlobalStyle`
         cursor: pointer;
     }
     
+    .pointer {
+        cursor: pointer;
+    }
+
+    .text-primary {
+        color: var(--primary) !important;
+    }
+
+    .text-primary:hover {
+        color: rgba(128, 0, 0, 0.5) !important;
+    }
+
+    .text-primary:focus, .text-primary:active {
+        color: rgba(128, 0, 0, 0.7) !important;
+    }
+
     .dropdown-content-open {
         padding: 0;
         display: block;

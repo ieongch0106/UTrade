@@ -10,13 +10,13 @@ export default function Home() {
   return (
       <>
         <div className='home-search'>
-            <h2>The #1 Site To Buy And Sell At UMass Amherst</h2>
+            <h3>The #1 Site To Buy And Sell At UMass Amherst</h3>
             <SearchBar placeholder="search for anything..."/>
-            <h4>nothing on your mind?&nbsp;&nbsp;
+            <h6>nothing on your mind?&nbsp;&nbsp;
             <Link to="/buy">
               <Button sty="link" color="white">Look around</Button>
             </Link>
-            </h4>
+            </h6>
         </div>
       </>
   )

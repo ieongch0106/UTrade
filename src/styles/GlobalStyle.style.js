@@ -41,10 +41,12 @@ export const GlobalStyles = createGlobalStyle`
         justify-content: space-between;
         height: 55px;
         background-color: var(--primary);
+        padding: 0 2rem;
     }
     
     nav ul {
         margin: 0;
+        padding: 0;
         display: flex;
         align-items: center;
         gap: 25px;
@@ -67,7 +69,7 @@ export const GlobalStyles = createGlobalStyle`
         color: var(--white);
         font-size: 18px;
         gap: 10px;
-        padding-right: 1rem;
+        margin-right: -1rem;
     }
 
     nav a {
@@ -78,6 +80,7 @@ export const GlobalStyles = createGlobalStyle`
     
     nav li:hover {
         border-bottom: 1px var(--white) solid;
+        cursor: pointer;
     }
     
     .dropdown-content-open {
@@ -86,7 +89,6 @@ export const GlobalStyles = createGlobalStyle`
         position: absolute;
         margin-top: 180px;
         right: 0;
-        cursor: pointer;
         background-color: var(--white);
         box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
         z-index: 1;
@@ -172,10 +174,6 @@ export const GlobalStyles = createGlobalStyle`
         justify-content: center;
         align-items: center;
         gap: 3rem;
-    }
-
-    .home-search h2 {
-        font-size: 28px;
     }
 
     /* buy */

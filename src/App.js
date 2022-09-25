@@ -15,6 +15,10 @@ function App() {
   const [ Auth, setAuth ] = useState('');
 
   useEffect(() => {
+    if (sessionStorage.getItem('token')) {
+      setAuth({user: JSON.parse(sessionStorage.getItem('token')).name});    
+    }
+
     if (localStorage.getItem('token')) {
       setAuth({user: JSON.parse(localStorage.getItem('token')).name});    
     }

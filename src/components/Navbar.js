@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext } from 'react'
 import { NavLink } from 'react-router-dom'
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
@@ -20,6 +20,13 @@ export default function Navbar({userloggedIn}) {
   const ModalHandler = (e) => {
     setIsOpen(true);
     e.target.id === "login_button" ? SetContent(<Login />) : SetContent(<Register />);
+  }
+
+  const logoutHandler = () => {
+    userloggedIn = false;
+    localStorage.clear();
+    sessionStorage.clear();
+    window.location.reload();
   }
 
   return (
@@ -57,7 +64,7 @@ export default function Navbar({userloggedIn}) {
                     <ul className={DropdownOpen ? "dropdown-content-open" : "hidden"}>
                         <li><FaceIcon sx={{color: 'var(--primary)'}}/>Account</li>
                         <li><BookmarkIcon sx={{color: 'var(--primary)'}} />Your Watchlist</li>
-                        <li onClick={() => {userloggedIn = false; localStorage.clear(); window.location.reload()}}><LogoutIcon sx={{color: 'var(--primary)'}} />Log out</li>
+                        <li onClick={() => logoutHandler()}><LogoutIcon sx={{color: 'var(--primary)'}} />Log out</li>
                     </ul>
                 </ul>
             </>

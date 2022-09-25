@@ -35,6 +35,8 @@ export default function Login() {
             }, 2000);
             if (remember.checked) {
                 localStorage.setItem('token', JSON.stringify(token))
+            } else {
+                sessionStorage.setItem('token', JSON.stringify(token));
             }
         } catch (err) {
             console.log(err);
@@ -47,11 +49,12 @@ export default function Login() {
   return (
     <>
         { Success ? (
-            <div className='text-center'>
+            <div className='text-center bg-grey'>
               <h2>LOGIN SUCCESSFUL</h2>
               <br />
               <CheckCircleIcon sx={{fontSize: "100px", color: "#34b233"}}/>
-              <Button onClick={() => <Navigate to="/"/>}>home</Button>
+              <br />< br />
+              <Button color='white' onClick={() => window.location.href = '/'}>home</Button>
             </div>
         ) : (
             <div className="text-center">

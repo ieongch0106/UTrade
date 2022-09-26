@@ -3,12 +3,13 @@ import React, { useEffect, useRef, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
 import Post from '../components/Post';
 import SearchBar from '../components/SearchBar';
-import logo from '../images/UTrade Transparent.png';
+import logo from '../images/1.png';
 
 export default function Buy() {
   const navigate = useNavigate();
   const [scrollUp, setScrollUp] = useState(null);
   const searchRef = useRef();
+  const logoRef = useRef();
   
   const items = [
     {id: 1, image: 'image1', name: 'item1', price: '$100', location: 'On Campus'},
@@ -46,8 +47,14 @@ export default function Buy() {
         return;
       }
       setScrollUp(scrollY < lastScrollY ? true : false);
-      scrollUp ? searchRef.current.className = 'search-bar slide-down':
-                 searchRef.current.className = 'search-bar slide-up'
+      if (scrollUp) {
+        searchRef.current.className = 'search-bar slide-down';
+        logoRef.current.className = 'logo logo-to-black';
+      } else {
+        searchRef.current.className = 'search-bar slide-up'
+        logoRef.current.className = 'logo logo-to-maroon';
+      }
+                 
       lastScrollY = scrollY > 0 ? scrollY : 0;
       ticking = false;
     };
@@ -76,7 +83,7 @@ export default function Buy() {
   return (
     <>
       <div className='search-bar' ref={searchRef}><SearchBar width="26%"/></div>
-      <div className='logo'>
+      <div className='logo' ref={logoRef}>
         <Link to="/"><img src={logo} alt="logo" /></Link>
       </div>
       <div className='container'>
@@ -131,6 +138,7 @@ export default function Buy() {
           </ul>
         </div>
         <div className='section'>
+          <div className='posts-container'>
           {items.map((item, index) => {
             return (
               <div key={index} onClick={() => postHandler(item)}>
@@ -143,6 +151,7 @@ export default function Buy() {
               </div>
             )
           })}
+          </div>
         </div>
       </div>
     </>

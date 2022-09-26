@@ -229,10 +229,10 @@ export const GlobalStyles = createGlobalStyle`
     .logo {
         position: fixed;
         margin-top: -55px;
-        padding: 10px 15px 10px;
+        padding: 11px 15px 11px;
         text-align: center;
-        width: 260px;
-        background: var(--black);
+        width: 258px;
+        background: var(--primary);
         z-index: -1;
     }
 
@@ -284,24 +284,28 @@ export const GlobalStyles = createGlobalStyle`
     }
 
     .section {
-        background: grey;
-        display: grid;
-        grid-template-columns: repeat(5, 1fr);
-        gap: 46px;
         font-size: 16px;
-        /* margin-left: 280px; */
+        width: calc(100vw - 345px);
         float: right;
-        margin-right: 20px;
+        margin-right: 35px;
     }
     
-    .section div {
+    .posts-container {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        padding: 30px 0;
+        gap: 47.5px;
+    }
+
+    .posts-container div {
         display: flex;
         flex-direction: column;
         gap: 4px;
         cursor: pointer;
     }
 
-    .section img {
+    .posts-container img {
         width: 200px;
         height: 200px;
         border: 1px solid black;
@@ -404,6 +408,14 @@ export const GlobalStyles = createGlobalStyle`
         animation: SlideDown 0.5s linear forwards;
     }
 
+    .logo-to-maroon {
+        animation: toMaroon 0.5s linear forwards;
+    }
+    
+    .logo-to-black {
+        animation: toBlack 0.5s linear forwards;
+    }
+
     @keyframes SlideDown {
         from {
             transform: translateY(-65px);
@@ -419,6 +431,24 @@ export const GlobalStyles = createGlobalStyle`
         }
         to {
             transform: translateY(-65px);
+        }
+    }
+
+    @keyframes toMaroon {
+        from {
+            background-color: var(--black);
+        }
+        to {
+            background-color: var(--primary);
+        }
+    }
+
+    @keyframes toBlack {
+        from {
+            background-color: var(--primary);
+        }
+        to {
+            background-color: var(--black);
         }
     }
 

@@ -8,9 +8,11 @@ import 'react-image-crop/dist/ReactCrop.css';
 import CanvasPreview from '../components/CanvasPreview';
 import { Button } from '../styles/Button.style';
 import Modal from '../components/modal';
+import axios from 'axios';
 
 export default function Sell() {
   const Photo = useRef();
+  const thumbnail = useRef();
   const inputRef = useRef();
   const [Other, SetOther] = useState(null);
   const [OtherL, SetOtherL] = useState(null);
@@ -85,14 +87,31 @@ export default function Sell() {
     }
   }
 
+  const onSubmit = (e) => {
+    e.preventDefault();
+
+    const { item, price, location, category, condition, description } = e.target;
+    const data = { 
+      item: item.value,
+      price: price.value,
+      location: location.value,
+      category: category.value,
+      condition: condition.value,
+      description: description.value,
+      thumbnail: thumbnail.current.firstChild.toDataURL()
+    }
+    axios.post('http://localhost:3001/post/create', data);
+  }
+
   return (
-    <form className='sell mt-4 mb-4'>
+    <form className='sell mt-4 mb-4' onSubmit={onSubmit}>
       <h2 className='text-center pb-5'>Item For Sale</h2>
-      <Input sty="sell" placeholder='🎁 What are you selling?' />
+      <Input name='item' sty="sell" placeholder='🎁 What are you selling?' required/>
       <br /><br />
-      <Input type="text" sty="sell" placeholder='💲 Price' />
+      <Input name='price' type="text" sty="sell" placeholder='💲 Price' required/>
       <br /><br />
       <Select
+        name='location'
         options={locations}
         placeholder='📍 Location'
         isSearchable
@@ -107,10 +126,11 @@ export default function Sell() {
             primary: 'rgba(128, 0, 0, 0.8)'
           }
         })}
-        />
+      />
       {OtherL}
       <br />
       <Select
+        name='category'
         options={categories}
         placeholder='🔠 Select a Category'
         isSearchable
@@ -127,6 +147,7 @@ export default function Sell() {
         />
       <br />
       <Select
+        name='condition'
         options={conditions}
         placeholder="🔎 Item's Condition"
         isSearchable
@@ -143,9 +164,9 @@ export default function Sell() {
         />
       {Other}
       <br />
-      <textarea placeholder='💬 Describe your item (optional)'/>
-      <p><br />🖼️ Photo of your item (optional)<br /><br /></p>
-      <div className='media-list'>
+      <textarea name="description" placeholder='💬 Describe your item'/>
+      <p><br />🖼️ Photo of your item <br /><br /></p>
+      <div name='thumb' className='media-list'>
         <div>
           {src ?
             <ReactCrop
@@ -162,7 +183,7 @@ export default function Sell() {
             </div>
           }
           {completedCrop && 
-            <div>
+            <div ref={thumbnail}>
               <CanvasPreview
                 img={Photo.current}
                 crop={completedCrop}

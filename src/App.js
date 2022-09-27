@@ -35,7 +35,7 @@ function App() {
           <Route path='/post/:id' element={<Post />} />
           <Route path='/sell' element={<PrivateRoute><Sell/></PrivateRoute>} />
           <Route path='/about' element={<About />} />
-          <Route path='/login' element={<Login />} /> 
+          {!Auth ? <Route path='/login' element={<Login />} /> : <Route path='/login' element={<Home />} />}
         </Routes>
       </Router>
     </AuthContext.Provider>

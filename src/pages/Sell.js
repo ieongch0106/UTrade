@@ -104,9 +104,9 @@ export default function Sell() {
 
     const data = { 
       userid: 123,
-      item: 123,
-      price: 123,
-      location: 123,
+      item: item.value,
+      price: price.value,
+      location: location.value,
       category: 123,
       condition: 123,
       description: 123,

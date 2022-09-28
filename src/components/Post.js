@@ -1,11 +1,25 @@
-import React, { useEffect } from 'react'
+import axios from 'axios';
+import React, { useEffect, useState } from 'react'
 import { Button } from '../styles/Button.style';
 
 export default function Post({ id }) {
-    
+  const [Post, setPost] = useState({});  
+
+  const fetchPosts = async () => {
+    try {
+      const res = await axios.get('http://localhost:3002/posts/get', id);
+      setPost(res.data[0]);
+    } catch (err) {
+        console.log(err);
+        setPost({});
+    }
+  }
+  
   useEffect(() => {
-    // axios get id
-  }) 
+    fetchPosts();
+  }, []);
+  
+  console.log(Post);
   return (
     <div className='container'>
         <div className='post'>

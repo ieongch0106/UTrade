@@ -73,7 +73,17 @@ app.get("/posts/get", async (req, res) => {
         const posts = await postDB.find().toArray();
         res.status(200).send(shuffle(posts));
     } catch (err) {
-        res.status(500).send(err);
+        console.log(err);
+    }
+});
+
+app.get("/post/get", async (req, res) => {
+    const { postid } = req.body;
+    try {
+        const post = await postDB.findOne({ id: postid });
+        res.status(200).send(post);
+    } catch (err) {
+        console.log(err);
     }
 });
 

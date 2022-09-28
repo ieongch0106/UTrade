@@ -67,9 +67,8 @@ export default function Buy() {
     fetchPosts();
   }, []);
   
-  const postHandler = (item) => {
-    navigate(`/post/${item.id}`, {
-    })
+  const postHandler = (post) => {
+    navigate(`/post/${post.id}`)
   }
 
   return (

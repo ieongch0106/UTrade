@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { Button } from '../styles/Button.style';
 import SearchBar from '../components/SearchBar';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 export default function Home() {
   const [Posts, setPosts] = useState([]);  
 
+  const navigate = useNavigate();
+
   const fetchPosts = async () => {
     try {
-      const res = await axios.get('http://localhost:3002/posts/get?limit=3');
+      const res = await axios.get('http://localhost:3002/posts/get?limit=true');
       setPosts(res.data);
     } catch (err) {
       console.log(err);
@@ -17,10 +19,29 @@ export default function Home() {
     }
   }
   
+  const postHandler = (post) => {
+    navigate(`/post/${post.id}`)
+  }
+
+  const renderPosts = 
+    <div className='posts-container'>
+      {Posts.map((post, index) => {
+        return (
+          <div key={index} onClick={() => postHandler(post)}>
+            <div className='post-title'>
+              <img src='' alt={post.name}/>
+              <h6>{post.item}</h6>
+            </div>
+            <div>${post.price}</div>
+            <div>{post.location}</div>
+          </div>
+        )
+    })}
+    </div>;
+
   useEffect(() => {
     fetchPosts(); 
   }, [])
-  console.log(Posts)
 
   return (
       <>
@@ -33,6 +54,7 @@ export default function Home() {
             </Link>
             </h6>
         </div>
+        {renderPosts}
       </>
   )
 }

@@ -70,9 +70,10 @@ app.post("/post/create", async (req, res) => {
 
 app.get("/posts/get", async (req, res) => {
     const { limit } = req.query;
+    // console.log('limit is '.concat(typeof(limit)));
     if (limit) {
         try {
-            const posts = await postDB.aggregate([{ $sample: { size: limit } }]).toArray();
+            const posts = await postDB.aggregate([{ $sample: { size: 3 } }]).toArray();
             res.status(200).send(posts);
         } catch (err) {
             console.log(err);

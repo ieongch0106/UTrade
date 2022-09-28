@@ -1,12 +1,27 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button } from '../styles/Button.style';
 import SearchBar from '../components/SearchBar';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 export default function Home() {
+  const [Posts, setPosts] = useState([]);  
+
+  const fetchPosts = async () => {
+    try {
+      const res = await axios.get('http://localhost:3002/posts/get?limit=3');
+      setPosts(res.data);
+    } catch (err) {
+      console.log(err);
+      setPosts([]);
+    }
+  }
+  
   useEffect(() => {
-    
-  })
+    fetchPosts(); 
+  }, [])
+  console.log(Posts)
+
   return (
       <>
         <div className='home-search'>

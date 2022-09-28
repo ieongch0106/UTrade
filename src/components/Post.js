@@ -5,7 +5,7 @@ import { Button } from '../styles/Button.style';
 export default function Post({ id }) {
   const [Post, setPost] = useState({});  
 
-  const fetchPosts = async () => {
+  const fetchPost = async () => {
     try {
       const res = await axios.get('http://localhost:3002/posts/get', id);
       setPost(res.data[0]);
@@ -16,10 +16,9 @@ export default function Post({ id }) {
   }
   
   useEffect(() => {
-    fetchPosts();
+    fetchPost();
   }, []);
   
-  console.log(Post);
   return (
     <div className='container'>
         <div className='post'>

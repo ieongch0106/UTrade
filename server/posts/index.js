@@ -69,11 +69,21 @@ app.post("/post/create", async (req, res) => {
 });
 
 app.get("/posts/get", async (req, res) => {
-    try {
-        const posts = await postDB.find().toArray();
-        res.status(200).send(shuffle(posts));
-    } catch (err) {
-        console.log(err);
+    const { limit } = req.query;
+    if (limit) {
+        try {
+            const posts = await postDB.aggregate([{ $sample: { size: limit } }]).toArray();
+            res.status(200).send(posts);
+        } catch (err) {
+            console.log(err);
+        }
+    } else {
+        try {
+            const posts = await postDB.find().toArray();
+            res.status(200).send(shuffle(posts));
+        } catch (err) {
+            console.log(err);
+        }
     }
 });
 

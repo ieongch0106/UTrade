@@ -32,6 +32,21 @@ const connectDB = async () => {
 
 await connectDB();
 
+function shuffle(array) {
+    let currentIndex = array.length,  randomIndex;
+  
+    while (currentIndex !== 0) {
+  
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex--;
+  
+      [array[currentIndex], array[randomIndex]] = [
+        array[randomIndex], array[currentIndex]];
+    }
+  
+    return array;
+}
+
 app.post("/post/create", async (req, res) => {
     const { userid, item, price, location, category, condition, description, thumbnail } = req.body;
     console.log(req.body)
@@ -47,23 +62,19 @@ app.post("/post/create", async (req, res) => {
             thumbnail: thumbnail
         }
         postDB.insertOne(data)
-        res.status(200).send(data);
+        res.status(201).send(data);
     } else {
         res.status(404).send({msg: 'Request data is incomplete'});
     }
 });
 
-app.post("/post/get", async (req, res) => {
+app.get("/posts/get", async (req, res) => {
     try {
-        const { username, fullname, email, password, tel } = req.body;
-        if (username && fullname && email && password && tel) {
-            // check if user existed
-        } else {
-
-        }
-      } catch (err) {
+        const posts = await postDB.find().toArray();
+        res.status(200).send(shuffle(posts));
+    } catch (err) {
         res.status(500).send(err);
-      }
+    }
 });
 
 app.listen(PORT, () => {

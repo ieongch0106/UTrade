@@ -44,7 +44,7 @@ app.post("/register", async (req, res) => {
         if (username && fullname && email && password && tel) {
             // check if user existed
             const user = await db.insertOne({id: uuid(), username: username, fullname: fullname, email: email, password: password, tel: tel});
-            res.status(200).json(user);
+            res.status(201).json(user);
         } else {
 
         }

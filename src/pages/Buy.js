@@ -1,4 +1,5 @@
 import { Checkbox, FormControlLabel, FormGroup, Typography } from '@mui/material';
+import axios from 'axios';
 import React, { useEffect, useRef, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
 import Post from '../components/Post';
@@ -6,8 +7,10 @@ import SearchBar from '../components/SearchBar';
 import logo from '../images/1.png';
 
 export default function Buy() {
-  const navigate = useNavigate();
   const [scrollUp, setScrollUp] = useState(null);
+  const [posts, setPosts] = useState([]);
+
+  const navigate = useNavigate();
   const searchRef = useRef();
   const logoRef = useRef();
   
@@ -71,8 +74,15 @@ export default function Buy() {
     return () => window.removeEventListener("scroll", onScroll);  
   }, [scrollUp]);
 
+  const fetchPosts = async () => {
+    const res = await axios.get('http://localhost:3002/posts/get');
+    console.log(res.data)
+    // setPosts(res.data);
+  }
+
   useEffect(() => {
     // fetch items from database
+    fetchPosts();
   }, []);
   
   const postHandler = (item) => {

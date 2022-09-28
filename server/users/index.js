@@ -6,7 +6,11 @@ import cors from 'cors';
 import { v4 as uuid } from 'uuid';
 
 const app = express();
-const PORT = process.env.PORT || 3001;
+const PORT = 3001;
+
+app.use(logger('dev'));
+app.use(express.json());
+app.use(cors());
 
 const connectDB = async () => {
     const client = await MongoClient.connect(process.env.REACT_APP_USER_KEY, {
@@ -19,10 +23,6 @@ const connectDB = async () => {
 }
 
 const db = await connectDB();
-
-app.use(logger('dev'));
-app.use(express.json());
-app.use(cors());
 
 app.post("/login", async (req, res) => {
     try {

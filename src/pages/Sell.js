@@ -87,20 +87,38 @@ export default function Sell() {
     }
   }
 
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
 
     const { item, price, location, category, condition, description } = e.target;
+    // const data = { 
+    //   userid: 123,
+    //   item: item.value,
+    //   price: price.value,
+    //   location: location.value,
+    //   category: category.value,
+    //   condition: condition.value,
+    //   description: description.value,
+    //   thumbnail: thumbnail.current.firstChild.toDataURL()
+    // }
+
     const data = { 
-      item: item.value,
-      price: price.value,
-      location: location.value,
-      category: category.value,
-      condition: condition.value,
-      description: description.value,
-      thumbnail: thumbnail.current.firstChild.toDataURL()
+      userid: 123,
+      item: 123,
+      price: 123,
+      location: 123,
+      category: 123,
+      condition: 123,
+      description: 123,
+      thumbnail: 123123123
     }
-    axios.post('http://localhost:3001/post/create', data);
+
+    try {
+      const res = await axios.post('http://localhost:3002/post/create', data);
+      console.log(res.data);
+    } catch (err) {
+        console.log(err);
+    }
   }
 
   return (

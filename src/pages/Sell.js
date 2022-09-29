@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useState } from 'react'
 import { Input } from '../styles/Input.style'
 import Select from 'react-select';
 import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
@@ -9,15 +9,14 @@ import CanvasPreview from '../components/CanvasPreview';
 import { Button } from '../styles/Button.style';
 import Modal from '../components/modal';
 import axios from 'axios';
-import { AuthContext } from '../context/AuthProvider';
 
 export default function Sell() {
-  const {Auth} = useContext(AuthContext);
   const Photo = useRef();
   const thumbnail = useRef();
   const inputRef = useRef();
   const [Other, SetOther] = useState(null);
   const [OtherL, SetOtherL] = useState(null);
+  const [image, setImage] = useState();
   const [src, setPhoto] = useState(null);
   const [crop, setCrop] = useState({
     unit: 'px',
@@ -83,8 +82,17 @@ export default function Sell() {
     }),
   }
 
+  const reader = (file) => {
+    var reader = new FileReader();
+    reader.onloadend = () => {
+      setImage(reader.result);
+    }
+    reader.readAsDataURL(file);
+  }
+
   const mediaHandler = (e) => {
     for (const file of (e.target.files)) {
+      reader(file);
       setPhoto(URL.createObjectURL(file));
     }
   }
@@ -93,17 +101,8 @@ export default function Sell() {
     e.preventDefault();
 
     const { name, price, location, category, condition, description } = e.target;
-
-    // const data = { 
-    //   userid: 123,
-    //   item: item.value,
-    //   price: price.value,
-    //   location: location.value,
-    //   category: category.value,
-    //   condition: condition.value,
-    //   description: description.value,
-    //   thumbnail: thumbnail.current.firstChild.toDataURL()
-    // }
+    console.log(image)
+    console.log(completedCrop)
     const data = { 
       username: JSON.parse(sessionStorage.getItem('token')).username,
       name: name.value,
@@ -112,15 +111,16 @@ export default function Sell() {
       category: 123,
       condition: 123,
       description: 123,
-      thumbnail: 123123123
+      photo: image,
+      thumbnail: completedCrop
     }
 
-    try {
-      const res = await axios.post('http://localhost:3002/post/create', data);
-      console.log(res.data);
-    } catch (err) {
-      console.log(err);
-    }
+    // try {
+    //   const res = await axios.post('http://localhost:3002/post/create', data);
+    //   console.log(res.data);
+    // } catch (err) {
+    //   console.log(err);
+    // }
   }
 
   return (
@@ -214,7 +214,7 @@ export default function Sell() {
         </div>
         <div className='d-flex gap-3 justify-content-center mt-4'>
           {src && <Button sty="link" bg="transparent" color="primary">Choose another image</Button>}
-          <Button color="white">Continue</Button><br />
+          <Button color="white" >Continue</Button><br />
           <input 
             type="file"
             accept='image/*'

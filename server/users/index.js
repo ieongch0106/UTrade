@@ -31,7 +31,7 @@ app.post("/login", async (req, res) => {
         if (user) {
             res.status(200).send(user.fullname);
         } else {
-            res.status(404).send({msg: 'User not found'});
+            res.status(404).send('User not found');
         }
     } catch (err) {
         res.status(500).send(err);

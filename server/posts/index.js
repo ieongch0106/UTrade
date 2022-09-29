@@ -48,12 +48,12 @@ function shuffle(array) {
 }
 
 app.post("/post/create", async (req, res) => {
-    const { userid, item, price, location, category, condition, description, thumbnail } = req.body;
-    console.log(req.body)
-    if (userid || item || price || location || category || condition || description || thumbnail) {
+    const { username, name, price, location, category, condition, description, thumbnail } = req.body;
+    if (username || name || price || location || category || condition || description || thumbnail) {
+        const id = uuid();
         const data = {
-            id: uuid(),
-            item: item,
+            id: id,
+            name: name,
             price: price,
             location: location,
             category: category,
@@ -61,19 +61,32 @@ app.post("/post/create", async (req, res) => {
             description: description,
             thumbnail: thumbnail
         }
-        postDB.insertOne(data)
-        res.status(201).send(data);
+        const user = await userDB.findOne({ username: username });
+        if (user) {
+            if (user.hasOwnProperty('posts')) {
+                userDB.updateOne(user,
+                    { $push : { "posts": { id: id, name: name } } },
+                )
+            } else {
+                userDB.updateOne(user,
+                    { $set : { "posts": [ { id: id, name: name } ] } },
+                )
+            }
+            postDB.insertOne(data)
+            res.status(201).send(data);
+        } else {
+            res.status(404).send('User not found');
+        }
     } else {
-        res.status(404).send({msg: 'Request data is incomplete'});
+        res.status(400).send({msg: 'Request data is incomplete'});
     }
 });
 
 app.get("/posts/get", async (req, res) => {
     const { limit } = req.query;
-    // console.log('limit is '.concat(typeof(limit)));
     if (limit) {
         try {
-            const posts = await postDB.aggregate([{ $sample: { size: 3 } }]).toArray();
+            const posts = await postDB.aggregate([{ $sample: { size: 12 } }]).toArray();
             res.status(200).send(posts);
         } catch (err) {
             console.log(err);

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { Input } from '../styles/Input.style'
 import Select from 'react-select';
 import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
@@ -9,8 +9,10 @@ import CanvasPreview from '../components/CanvasPreview';
 import { Button } from '../styles/Button.style';
 import Modal from '../components/modal';
 import axios from 'axios';
+import { AuthContext } from '../context/AuthProvider';
 
 export default function Sell() {
+  const {Auth} = useContext(AuthContext);
   const Photo = useRef();
   const thumbnail = useRef();
   const inputRef = useRef();
@@ -90,7 +92,8 @@ export default function Sell() {
   const onSubmit = async (e) => {
     e.preventDefault();
 
-    const { item, price, location, category, condition, description } = e.target;
+    const { name, price, location, category, condition, description } = e.target;
+
     // const data = { 
     //   userid: 123,
     //   item: item.value,
@@ -101,10 +104,9 @@ export default function Sell() {
     //   description: description.value,
     //   thumbnail: thumbnail.current.firstChild.toDataURL()
     // }
-
     const data = { 
-      userid: 123,
-      item: item.value,
+      username: JSON.parse(sessionStorage.getItem('token')).username,
+      name: name.value,
       price: price.value,
       location: location.value,
       category: 123,
@@ -117,14 +119,14 @@ export default function Sell() {
       const res = await axios.post('http://localhost:3002/post/create', data);
       console.log(res.data);
     } catch (err) {
-        console.log(err);
+      console.log(err);
     }
   }
 
   return (
     <form className='sell mt-4 mb-4' onSubmit={onSubmit}>
       <h2 className='text-center pb-5'>Item For Sale</h2>
-      <Input name='item' sty="sell" placeholder='🎁 What are you selling?' required/>
+      <Input name='name' sty="sell" placeholder='🎁 What are you selling?' required/>
       <br /><br />
       <Input name='price' type="text" sty="sell" placeholder='💲 Price' required/>
       <br /><br />

@@ -25,19 +25,16 @@ export default function Login() {
         const user = username.value;
         const pwd = password.value
         try {
-            const data = {username: user, password: pwd};
+            const data = { username: user, password: pwd };
             const res = await axios.post('http://localhost:3001/login', data);
-            const token = {user: user, name: (res.data)};
+            const token = { username: user, name: (res.data) };
             setTimeout(() => {
                 setLoading(false);
                 setSuccess(true);
-                setAuth({user: (res.data)});
+                setAuth({ user: (res.data) });
             }, 2000);
-            if (remember.checked) {
-                localStorage.setItem('token', JSON.stringify(token))
-            } else {
-                sessionStorage.setItem('token', JSON.stringify(token));
-            }
+            sessionStorage.setItem('token', JSON.stringify(token));
+            remember.checked && localStorage.setItem('token', JSON.stringify(token));
         } catch (err) {
             console.log(err);
             setTimeout(() => {

@@ -86,7 +86,7 @@ export const GlobalStyles = createGlobalStyle`
         border-bottom: 1px var(--white) solid;
         cursor: pointer;
     }
-    
+
     .pointer {
         cursor: pointer;
     }

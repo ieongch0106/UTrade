@@ -16,11 +16,11 @@ function App() {
 
   useEffect(() => {
     if (sessionStorage.getItem('token')) {
-      setAuth({user: JSON.parse(sessionStorage.getItem('token')).name});    
+      setAuth({ user: JSON.parse(sessionStorage.getItem('token')).name });    
     }
 
     if (localStorage.getItem('token')) {
-      setAuth({user: JSON.parse(localStorage.getItem('token')).name});    
+      setAuth({ user: JSON.parse(localStorage.getItem('token')).name });    
     }
   }, []);
 

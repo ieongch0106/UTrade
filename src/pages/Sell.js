@@ -97,22 +97,11 @@ export default function Sell() {
     }
   }
 
+
   const onSubmit = async (e) => {
     e.preventDefault();
 
     const { name, price, location, category, condition, description } = e.target;
-    // const data = { 
-    //   username: JSON.parse(sessionStorage.getItem('token')).username,
-    //   name: name.value,
-    //   price: price.value,
-    //   location: location.value,
-    //   category: 123,
-    //   condition: 123,
-    //   description: 123,
-    //   photo: image,
-    //   thumbnail: completedCrop
-    // }
-
     const data = { 
       username: JSON.parse(sessionStorage.getItem('token')).username,
       name: name.value,

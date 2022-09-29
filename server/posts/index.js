@@ -48,8 +48,8 @@ function shuffle(array) {
 }
 
 app.post("/post/create", async (req, res) => {
-    const { username, name, price, location, category, condition, description, thumbnail } = req.body;
-    if (username || name || price || location || category || condition || description || thumbnail) {
+    const { username, name, price, location, category, condition, description, photo, thumbnail } = req.body;
+    if (username || name || price || location || category || condition || description || photo || thumbnail) {
         const id = uuid();
         const data = {
             id: id,
@@ -59,7 +59,9 @@ app.post("/post/create", async (req, res) => {
             category: category,
             condition: condition,
             description: description,
-            thumbnail: thumbnail
+            photo: photo, 
+            thumbnail: thumbnail,
+            date: new Date()
         }
         const user = await userDB.findOne({ username: username });
         if (user) {

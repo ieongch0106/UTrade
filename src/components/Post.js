@@ -17,7 +17,34 @@ export default function Post() {
         setPost({});
     }
   }
-  
+
+  function timeSince(date) {
+      var seconds = Math.floor((new Date() - date) / 1000);
+    
+      var interval = seconds / 31536000;
+    
+      if (interval > 1) {
+        return Math.floor(interval) + " years";
+      }
+      interval = seconds / 2592000;
+      if (interval > 1) {
+        return Math.floor(interval) + " months";
+      }
+      interval = seconds / 86400;
+      if (interval > 1) {
+        return Math.floor(interval) + " days";
+      }
+      interval = seconds / 3600;
+      if (interval > 1) {
+        return Math.floor(interval) + " hours";
+      }
+      interval = seconds / 60;
+      if (interval > 1) {
+        return Math.floor(interval) + " minutes";
+      }
+      return Math.floor(seconds) + " seconds";
+  }
+
   useEffect(() => {
     fetchPost();
   }, []);
@@ -37,6 +64,7 @@ export default function Post() {
             <div className='seller-info'>
                 <h4>{Post.name}</h4>
                 <h2>${Post.price}</h2>
+                <h5>Posted about  {timeSince(new Date(Post.date))} ago {Post.location}</h5>
                 condition: {Post.condition}
                 <br /><br />
                 <div className='d-flex justify-content-between'>

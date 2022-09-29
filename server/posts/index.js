@@ -102,9 +102,9 @@ app.get("/posts/get", async (req, res) => {
 });
 
 app.get("/post/get", async (req, res) => {
-    const { postid } = req.body;
+    const { id } = req.query;
     try {
-        const post = await postDB.findOne({ id: postid });
+        const post = await postDB.findOne({ id: id });
         res.status(200).send(post);
     } catch (err) {
         console.log(err);

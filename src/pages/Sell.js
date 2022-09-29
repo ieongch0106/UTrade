@@ -101,26 +101,36 @@ export default function Sell() {
     e.preventDefault();
 
     const { name, price, location, category, condition, description } = e.target;
-    console.log(image)
-    console.log(completedCrop)
+    // const data = { 
+    //   username: JSON.parse(sessionStorage.getItem('token')).username,
+    //   name: name.value,
+    //   price: price.value,
+    //   location: location.value,
+    //   category: 123,
+    //   condition: 123,
+    //   description: 123,
+    //   photo: image,
+    //   thumbnail: completedCrop
+    // }
+
     const data = { 
       username: JSON.parse(sessionStorage.getItem('token')).username,
       name: name.value,
       price: price.value,
       location: location.value,
-      category: 123,
-      condition: 123,
-      description: 123,
-      photo: image,
-      thumbnail: completedCrop
+      category: category.value,
+      condition: condition.value,
+      description: description.value,
+      photo: 123,
+      thumbnail: 123
     }
 
-    // try {
-    //   const res = await axios.post('http://localhost:3002/post/create', data);
-    //   console.log(res.data);
-    // } catch (err) {
-    //   console.log(err);
-    // }
+    try {
+      const res = await axios.post('http://localhost:3002/post/create', data);
+      console.log(res.data);
+    } catch (err) {
+      console.log(err);
+    }
   }
 
   return (

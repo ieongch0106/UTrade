@@ -2,7 +2,6 @@ import { Checkbox, FormControlLabel, FormGroup, Typography } from '@mui/material
 import axios from 'axios';
 import React, { useEffect, useRef, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
-import Post from '../components/Post';
 import SearchBar from '../components/SearchBar';
 import logo from '../images/1.png';
 
@@ -135,7 +134,7 @@ export default function Buy() {
               <div key={index} onClick={() => postHandler(post)}>
                 <div className='post-title'>
                   <img src='' alt={post.name}/>
-                  <h6>{post.item}</h6>
+                  <h6>{post.name}</h6>
                 </div>
                 <div>${post.price}</div>
                 <div>{post.location}</div>

@@ -299,6 +299,12 @@ export const GlobalStyles = createGlobalStyle`
         flex-direction: column;
         gap: 4px;
         cursor: pointer;
+        transition: all 0.065s;
+    }
+
+    .posts-container div:focus, .posts-container div:active {
+        transform: scale(0.98);
+        filter: brightness(0.7);
     }
 
     .posts-container img {

@@ -1,9 +1,11 @@
+import { CircularProgress } from '@mui/material';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
 import { Button } from '../styles/Button.style';
 
 export default function Post() {
+  const [ Loading, setLoading ] = useState(true);
   const [Post, setPost] = useState({});  
   const param = useParams();
   const id = param.id;
@@ -47,9 +49,16 @@ export default function Post() {
 
   useEffect(() => {
     fetchPost();
+    setLoading(false);
   }, []);
   
   return (
+    <>
+      {Loading ?
+      <div className='top-50 start-50 position-absolute'>
+        <CircularProgress sx={{color: "var(--primary)"}} size={60}/>
+      </div> : 
+      <>
         <div className='post'>
             <div className='post-info'>
                 <div className='post-image'>
@@ -72,5 +81,8 @@ export default function Post() {
                 </div>
             </div>
         </div>
+      </>
+      }
+    </>
   )
 }

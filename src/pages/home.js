@@ -3,8 +3,10 @@ import { Button } from '../styles/Button.style';
 import SearchBar from '../components/SearchBar';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { CircularProgress } from '@mui/material';
 
 export default function Home() {
+  const [ Loading, setLoading ] = useState(true);
   const [Posts, setPosts] = useState([]);  
 
   const navigate = useNavigate();
@@ -42,21 +44,29 @@ export default function Home() {
     </div>
 
   useEffect(() => {
-    fetchPosts(); 
+    fetchPosts();
+    setLoading(false);
   }, [])
 
   return (
       <>
-        <div className='home-search'>
-            <h3>The #1 Site To Buy And Sell At UMass Amherst</h3>
-            <SearchBar placeholder="search for anything..."/>
-            <h6>nothing on your mind?&nbsp;&nbsp;
-            <Link to="/buy">
-              <Button sty="link" color="white">Look around</Button>
-            </Link>
-            </h6>
-        </div>
-        {renderPosts}
+        {Loading ?
+          <div className='top-50 start-50 position-absolute'>
+            <CircularProgress sx={{color: "var(--primary)"}} size={60}/>
+          </div> : 
+          <>
+            <div className='home-search'>
+                <h3>The #1 Site To Buy And Sell At UMass Amherst</h3>
+                <SearchBar placeholder="search for anything..."/>
+                <h6>nothing on your mind?&nbsp;&nbsp;
+                <Link to="/buy">
+                  <Button sty="link" color="white">Look around</Button>
+                </Link>
+                </h6>
+            </div>
+            {renderPosts}
+          </>
+        }
       </>
   )
 }

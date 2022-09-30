@@ -232,7 +232,7 @@ export default function Register() {
                             I agree the terms of use
                         </label>
                     </div>
-                    <Button color="white" sty="modal" disabled={!validName || !validPwd || !validMatch || !validPhone ? true : false}>{loading ? <CircularProgress color="grey" size={40}/> : 'Join'}</Button> 
+                    <Button color="white" sty="modal" disabled={!validName || !validPwd || !validMatch || !validPhone ? true : false}>{loading ? <CircularProgress color="grey" size={30}/> : 'Join'}</Button> 
                     <br /><br />
                 </form>
                 <hr />

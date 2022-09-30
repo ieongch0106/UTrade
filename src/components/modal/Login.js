@@ -78,7 +78,7 @@ export default function Login() {
                         required
                     />
                     <br />
-                    <Button color="white" sty="modal">{loading ? <CircularProgress color="grey" size={40}/> : 'Continue'}</Button> <br />
+                    <Button color="white" sty="modal">{loading ? <CircularProgress color="grey" size={30}/> : 'Continue'}</Button> <br />
                     <div className="d-flex justify-content-between mt-3 mb-3">
                         <div>
                             <input type="checkbox" name="remember"/>

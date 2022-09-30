@@ -2,13 +2,16 @@ import { Checkbox, CircularProgress, FormControlLabel, FormGroup, Typography } f
 import axios from 'axios';
 import React, { useEffect, useRef, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
+import CanvasPreview from '../components/CanvasPreview';
 import SearchBar from '../components/SearchBar';
 import logo from '../images/1.png';
+import { URLtoBlob } from '../methods/ImageConverter';
 
 export default function Buy() {
   const [ Loading, setLoading ] = useState(true);
   const [ scrollUp, setScrollUp ] = useState(null);
   const [ posts, setPosts ] = useState([]);
+  
 
   const navigate = useNavigate();
   const searchRef = useRef();
@@ -58,19 +61,38 @@ export default function Buy() {
   }, [scrollUp]);
 
   const fetchPosts = async () => {
-    const res = await axios.get('http://localhost:3001/posts/get');
-    setPosts(res.data);
+    try {
+      const res = await axios.get('http://localhost:3001/posts/get');
+      setPosts(res.data);
+    } catch (err) {
+      console.log(err)
+    }
   }
   
+  const imageHandler = (name, photo, thumbnail) => {
+    console.log(name, photo, thumbnail)
+    if (name && photo && thumbnail) {
+      URLtoBlob(photo);
+      <CanvasPreview
+        img={<img src={photo} alt={name}/>}
+        crop={thumbnail}
+      />
+    } else {
+      // image unavailable
+      return name ? <img src="" alt={name}/> : <img src="" alt=""/>
+    }
+    
+  }
+
+  const postHandler = (post) => {
+    navigate(`/post/${post.id}`)
+  }
+
   useEffect(() => {
     // fetch items from database
     fetchPosts();
     setLoading(false);
   }, []);
-  
-  const postHandler = (post) => {
-    navigate(`/post/${post.id}`)
-  }
 
   return (
     <>
@@ -136,10 +158,11 @@ export default function Buy() {
         <div className='section'>
           <div className='posts-container'>
           {posts.map((post, index) => {
+            const image = imageHandler(post.name, post.photo, post.thumbnail)
             return (
               <div key={index} onClick={() => postHandler(post)}>
                 <div className='post-title'>
-                  <img src='' alt={post.name}/>
+                  <img src={image} alt={post.name}/>
                   <h6>{post.name}</h6>
                 </div>
                 <div>${post.price}</div>

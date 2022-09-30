@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react'
+import { URLtoBlob } from '../methods/ImageConverter';
 
 export default function CanvasPreview({ img, crop }) {
-  const [ image, setImage ] = useState(null);
-
-  const drawImage = () => {
+  const drawImage = async () => {
     const canvas = document.querySelector("canvas");
     const ctx = canvas.getContext('2d');
     
@@ -27,24 +26,12 @@ export default function CanvasPreview({ img, crop }) {
       img.width,
       img.height
     );
-
-    const base64Image = canvas.toDataURL("image/jpeg", 1);
-    return base64Image
   }
 
   
   useEffect(() => {
-      const fetchPhoto = async () => {
-        try {
-          await fetch(drawImage())
-          .then(res => res.blob())
-          .then(blob => setImage(URL.createObjectURL(blob)))
-        } catch (err) {
-          console.log(err);
-        }
-      }
-      fetchPhoto();
-    }, [crop])
+    drawImage()
+  }, [crop])
 
   return (
     <canvas width={img.width} height={img.height}/>

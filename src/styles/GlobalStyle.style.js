@@ -37,7 +37,10 @@ export const GlobalStyles = createGlobalStyle`
     }
 
     canvas {
+        width: 200px;
+        height: 200px;
         border: 1px solid var(--black);
+        border-radius: 0.3rem;
     }
 
     nav {

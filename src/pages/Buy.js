@@ -5,13 +5,13 @@ import { Link, useNavigate } from 'react-router-dom';
 import CanvasPreview from '../components/CanvasPreview';
 import SearchBar from '../components/SearchBar';
 import logo from '../images/1.png';
+import Unavailable from '../images/Unavailable.jpg';
 import { URLtoBlob } from '../methods/ImageConverter';
 
 export default function Buy() {
   const [ Loading, setLoading ] = useState(true);
   const [ scrollUp, setScrollUp ] = useState(null);
   const [ posts, setPosts ] = useState([]);
-  
 
   const navigate = useNavigate();
   const searchRef = useRef();
@@ -73,13 +73,12 @@ export default function Buy() {
     console.log(name, photo, thumbnail)
     if (name && photo && thumbnail) {
       URLtoBlob(photo);
-      <CanvasPreview
+      return <CanvasPreview
         img={<img src={photo} alt={name}/>}
         crop={thumbnail}
-      />
+      />;
     } else {
-      // image unavailable
-      return name ? <img src="" alt={name}/> : <img src="" alt=""/>
+      return <img src={Unavailable} alt={name || ''}/>
     }
     
   }
@@ -162,7 +161,7 @@ export default function Buy() {
             return (
               <div key={index} onClick={() => postHandler(post)}>
                 <div className='post-title'>
-                  <img src={image} alt={post.name}/>
+                  {image}
                   <h6>{post.name}</h6>
                 </div>
                 <div>${post.price}</div>

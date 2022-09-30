@@ -19,7 +19,7 @@ function App() {
   useEffect(() => {
     setTimeout(() => {
       setLoading(false)
-    }, 1000);
+    }, 500);
     if (sessionStorage.getItem('token')) {
       setAuth({ user: JSON.parse(sessionStorage.getItem('token')).name });    
     }

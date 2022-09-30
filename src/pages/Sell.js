@@ -24,6 +24,7 @@ export default function Sell() {
     height: 250
   })
   const [completedCrop, setCompletedCrop] = useState(null);
+
   const locations = [
     { value: 'on-campus', label: 'On Campus' },
     { value: 'off-campus', label: 'Off Campus' }
@@ -102,6 +103,18 @@ export default function Sell() {
     e.preventDefault();
 
     const { name, price, location, category, condition, description } = e.target;
+    // const data = { 
+    //   username: JSON.parse(sessionStorage.getItem('token')).username,
+    //   name: name.value,
+    //   price: price.value,
+    //   location: location.value,
+    //   category: category.value,
+    //   condition: condition.value,
+    //   description: description.value,
+    //   photo: 123,
+    //   thumbnail: 123
+    // }
+
     const data = { 
       username: JSON.parse(sessionStorage.getItem('token')).username,
       name: name.value,
@@ -110,16 +123,18 @@ export default function Sell() {
       category: category.value,
       condition: condition.value,
       description: description.value,
-      photo: 123,
-      thumbnail: 123
+      photo: image,
+      thumbnail: completedCrop
     }
 
-    try {
-      const res = await axios.post('http://localhost:3001/post/create', data);
-      console.log(res.data);
-    } catch (err) {
-      console.log(err);
-    }
+    console.log(data);
+
+    // try {
+    //   const res = await axios.post('http://localhost:3001/post/create', data);
+    //   console.log(res.data);
+    // } catch (err) {
+    //   console.log(err);
+    // }
   }
 
   return (

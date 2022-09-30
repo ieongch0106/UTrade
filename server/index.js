@@ -6,7 +6,7 @@ import cors from 'cors';
 import { v4 as uuid } from 'uuid';
 
 const app = express();
-const PORT = 3002;
+const PORT = 3001;
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -46,6 +46,35 @@ function shuffle(array) {
   
     return array;
 }
+
+app.post("/login", async (req, res) => {
+    try {
+        const { username, password } = req.body;
+        const user = await userDB.findOne({username: username});
+        if (user) {
+            res.status(200).send(user.fullname);
+        } else {
+            res.status(404).send('User not found');
+        }
+    } catch (err) {
+        res.status(500).send(err);
+    }
+});
+
+app.post("/register", async (req, res) => {
+    try {
+        const { username, fullname, email, password, tel } = req.body;
+        if (username && fullname && email && password && tel) {
+            // check if user existed
+            const user = await userDB.insertOne({id: uuid(), username: username, fullname: fullname, email: email, password: password, tel: tel});
+            res.status(201).json(user);
+        } else {
+
+        }
+      } catch (err) {
+        res.status(500).send(err);
+      }
+});
 
 app.post("/post/create", async (req, res) => {
     const { username, name, price, location, category, condition, description, photo, thumbnail } = req.body;

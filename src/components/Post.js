@@ -10,7 +10,7 @@ export default function Post() {
 
   const fetchPost = async () => {
     try {
-      const res = await axios.get(`http://localhost:3002/post/get?id=${id}`);
+      const res = await axios.get(`http://localhost:3001/post/get?id=${id}`);
       setPost(res.data);
     } catch (err) {
         console.log(err);
@@ -50,7 +50,6 @@ export default function Post() {
   }, []);
   
   return (
-    <div className=''>
         <div className='post'>
             <div className='post-info'>
                 <div className='post-image'>
@@ -73,6 +72,5 @@ export default function Post() {
                 </div>
             </div>
         </div>
-    </div>
   )
 }

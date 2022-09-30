@@ -196,15 +196,11 @@ export const GlobalStyles = createGlobalStyle`
         gap: 3rem;
     }
 
-    /* buy */
-    .container {
-        all: unset;
-        width: 100%;
-        padding: 20px;
-        margin-right: auto;
-        margin-left: auto;
+    .home-container {
+        padding: 0px 40px;
     }
 
+    /* buy */
     .search-bar {
         position: fixed;
         display: flex;
@@ -294,7 +290,7 @@ export const GlobalStyles = createGlobalStyle`
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
-        padding: 30px 0;
+        padding: 30px 0px;
         gap: 47.5px;
     }
 

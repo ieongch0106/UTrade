@@ -57,7 +57,7 @@ export default function Buy() {
   }, [scrollUp]);
 
   const fetchPosts = async () => {
-    const res = await axios.get('http://localhost:3002/posts/get');
+    const res = await axios.get('http://localhost:3001/posts/get');
     setPosts(res.data);
   }
 
@@ -76,72 +76,70 @@ export default function Buy() {
       <div className='logo' ref={logoRef}>
         <Link to="/"><img src={logo} alt="logo" /></Link>
       </div>
-      <div className='container'>
-        <div className='sidebar'>
-          <ul>
-            <h5>CATEGORIES</h5>
-            <li>Clothing, Shoes & Accessories (2)</li>
-            <li>Home & Garden</li>
-            <li>Electronics</li>
-            <li>Service & Volunteering</li>
-            <li>Family & Kids</li>
-            <li>Sports & Outdoors</li>
-            <li>Hobbies</li>
-            <li>Housing & Rental</li>
-            <li>Vehicles</li>
-            <li>Miscellaneous</li>
-          </ul>
-          <ul>
-            <h5>PRICE</h5>
-            <li><input type="range" /></li>
-          </ul>
-          <ul>
-            <h5>LOCATION</h5>
-            <FormGroup>
-              <FormControlLabel
-                control={<Checkbox />}
-                label={<Typography className='label'>On Campus</Typography>} />
-              <FormControlLabel
-                control={<Checkbox />}
-                label={<Typography className='label'>Off Campus</Typography>} />
-            </FormGroup>
-          </ul>
-          <ul>
-            <h5>CONDITION</h5>
-            <FormGroup>
-              <FormControlLabel
-                control={<Checkbox />}
-                label={<Typography className='label'>New</Typography>} />
-              <FormControlLabel
-                control={<Checkbox />}
-                label={<Typography className='label'>Open</Typography>} />
-              <FormControlLabel
-                control={<Checkbox />}
-                label={<Typography className='label'>Reconditioned</Typography>} />
-              <FormControlLabel
-                control={<Checkbox />}
-                label={<Typography className='label'>Used</Typography>} />
-              <FormControlLabel
-                control={<Checkbox />}
-                label={<Typography className='label'>Other</Typography>} />
-            </FormGroup>
-          </ul>
-        </div>
-        <div className='section'>
-          <div className='posts-container'>
-          {posts.map((post, index) => {
-            return (
-              <div key={index} onClick={() => postHandler(post)}>
-                <div className='post-title'>
-                  <img src='' alt={post.name}/>
-                  <h6>{post.name}</h6>
-                </div>
-                <div>${post.price}</div>
-                <div>{post.location}</div>
+      <div className='sidebar'>
+        <ul>
+          <h5>CATEGORIES</h5>
+          <li>Clothing, Shoes & Accessories (2)</li>
+          <li>Home & Garden</li>
+          <li>Electronics</li>
+          <li>Service & Volunteering</li>
+          <li>Family & Kids</li>
+          <li>Sports & Outdoors</li>
+          <li>Hobbies</li>
+          <li>Housing & Rental</li>
+          <li>Vehicles</li>
+          <li>Miscellaneous</li>
+        </ul>
+        <ul>
+          <h5>PRICE</h5>
+          <li><input type="range" /></li>
+        </ul>
+        <ul>
+          <h5>LOCATION</h5>
+          <FormGroup>
+            <FormControlLabel
+              control={<Checkbox />}
+              label={<Typography className='label'>On Campus</Typography>} />
+            <FormControlLabel
+              control={<Checkbox />}
+              label={<Typography className='label'>Off Campus</Typography>} />
+          </FormGroup>
+        </ul>
+        <ul>
+          <h5>CONDITION</h5>
+          <FormGroup>
+            <FormControlLabel
+              control={<Checkbox />}
+              label={<Typography className='label'>New</Typography>} />
+            <FormControlLabel
+              control={<Checkbox />}
+              label={<Typography className='label'>Open</Typography>} />
+            <FormControlLabel
+              control={<Checkbox />}
+              label={<Typography className='label'>Reconditioned</Typography>} />
+            <FormControlLabel
+              control={<Checkbox />}
+              label={<Typography className='label'>Used</Typography>} />
+            <FormControlLabel
+              control={<Checkbox />}
+              label={<Typography className='label'>Other</Typography>} />
+          </FormGroup>
+        </ul>
+      </div>
+      <div className='section'>
+        <div className='posts-container'>
+        {posts.map((post, index) => {
+          return (
+            <div key={index} onClick={() => postHandler(post)}>
+              <div className='post-title'>
+                <img src='' alt={post.name}/>
+                <h6>{post.name}</h6>
               </div>
-            )
-          })}
-          </div>
+              <div>${post.price}</div>
+              <div>{post.location}</div>
+            </div>
+          )
+        })}
         </div>
       </div>
     </>

@@ -11,7 +11,7 @@ export default function Home() {
 
   const fetchPosts = async () => {
     try {
-      const res = await axios.get('http://localhost:3002/posts/get?limit=true');
+      const res = await axios.get('http://localhost:3001/posts/get?limit=true');
       setPosts(res.data);
     } catch (err) {
       console.log(err);
@@ -24,20 +24,22 @@ export default function Home() {
   }
 
   const renderPosts = 
-    <div className='posts-container'>
-      {Posts.map((post, index) => {
-        return (
-          <div key={index} onClick={() => postHandler(post)}>
-            <div className='post-title'>
-              <img src='' alt={post.name}/>
-              <h6>{post.item}</h6>
+    <div className='home-container'>
+      <div className='posts-container'>
+        {Posts.map((post, index) => {
+          return (
+            <div key={index} onClick={() => postHandler(post)}>
+              <div className='post-title'>
+                <img src='' alt={post.name}/>
+                <h6>{post.item}</h6>
+              </div>
+              <div>${post.price}</div>
+              <div>{post.location}</div>
             </div>
-            <div>${post.price}</div>
-            <div>{post.location}</div>
-          </div>
-        )
-    })}
-    </div>;
+          )
+      })}
+      </div>;
+    </div>
 
   useEffect(() => {
     fetchPosts(); 

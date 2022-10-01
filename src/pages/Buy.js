@@ -78,13 +78,8 @@ export default function Buy() {
         image.src = blob;
         image.alt = post.name || '';
         post.image = image;
-      } else {
-        image.src = Unavailable;
-        image.src = post.name || '';
-        post.image = image
       }
     })
-    return true;
   }
   
   const postHandler = (post) => {
@@ -95,10 +90,13 @@ export default function Buy() {
       return (
         <div key={index} onClick={() => postHandler(post)}>
         <div className='post-title'>
+          {post.image ? 
           <CanvasPreview
-            img={post.image || ''}
+            img={post.image}
             crop={post.thumbnail}
-          />
+          /> : 
+            <img src={Unavailable} alt={post.name || ''} />
+          }
           <h6>{post.name}</h6>
         </div>
         <div>${post.price}</div>
@@ -109,19 +107,15 @@ export default function Buy() {
 
   if (posts.length !== 0 && !fetched) {
     setFetched(true);
+    imageHandler();
     setTimeout(() => {
-      imageHandler();
-      setTimeout(() => {
-        setLoading(false)
-      }, 100);
-    }, 100);
+      setLoading(false);
+    }, 1000);
   }
 
   useEffect(() => {
     // fetch items from database
     fetchPosts();
-    console.log('once')
-    // setLoading(false);
   }, []);
 
   return (

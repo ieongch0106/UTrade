@@ -1,11 +1,11 @@
 export const URLtoBlob = async (url) => {
-    let blob;
+    let image;
     try {
-      blob = await fetch(url)
+     image = await fetch(url)
       .then(res => res.blob())
       .then(blob => URL.createObjectURL(blob))
     } catch (err) {
       console.log(err);
     }
-    return blob;
+    return image;
 }

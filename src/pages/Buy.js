@@ -11,6 +11,7 @@ import { URLtoBlob } from '../methods/ImageConverter';
 export default function Buy() {
   const [ Loading, setLoading ] = useState(true);
   const [ scrollUp, setScrollUp ] = useState(null);
+  const [ fetched, setFetched ] = useState(false);
   const [ posts, setPosts ] = useState([]);
 
   const navigate = useNavigate();
@@ -68,29 +69,59 @@ export default function Buy() {
       console.log(err)
     }
   }
-  
-  const imageHandler = (name, photo, thumbnail) => {
-    console.log(name, photo, thumbnail)
-    if (name && photo && thumbnail) {
-      URLtoBlob(photo);
-      return <CanvasPreview
-        img={<img src={photo} alt={name}/>}
-        crop={thumbnail}
-      />;
-    } else {
-      return <img src={Unavailable} alt={name || ''}/>
-    }
-    
-  }
 
+  const imageHandler = () => {
+    posts.forEach(async (post) => {
+      const image = document.createElement("img");
+      if (post.photo !== undefined) {
+        const blob = await URLtoBlob(post.photo);
+        image.src = blob;
+        image.alt = post.name || '';
+        post.image = image;
+      } else {
+        image.src = Unavailable;
+        image.src = post.name || '';
+        post.image = image
+      }
+    })
+    return true;
+  }
+  
   const postHandler = (post) => {
     navigate(`/post/${post.id}`)
+  }
+
+  const renderPosts = posts.map((post, index) =>  {
+      return (
+        <div key={index} onClick={() => postHandler(post)}>
+        <div className='post-title'>
+          <CanvasPreview
+            img={post.image || ''}
+            crop={post.thumbnail}
+          />
+          <h6>{post.name}</h6>
+        </div>
+        <div>${post.price}</div>
+        <div>{post.location}</div>
+        </div>
+      )
+  });
+
+  if (posts.length !== 0 && !fetched) {
+    setFetched(true);
+    setTimeout(() => {
+      imageHandler();
+      setTimeout(() => {
+        setLoading(false)
+      }, 100);
+    }, 100);
   }
 
   useEffect(() => {
     // fetch items from database
     fetchPosts();
-    setLoading(false);
+    console.log('once')
+    // setLoading(false);
   }, []);
 
   return (
@@ -156,19 +187,7 @@ export default function Buy() {
         </div>
         <div className='section'>
           <div className='posts-container'>
-          {posts.map((post, index) => {
-            const image = imageHandler(post.name, post.photo, post.thumbnail)
-            return (
-              <div key={index} onClick={() => postHandler(post)}>
-                <div className='post-title'>
-                  {image}
-                  <h6>{post.name}</h6>
-                </div>
-                <div>${post.price}</div>
-                <div>{post.location}</div>
-              </div>
-            )
-          })}
+            {!Loading && renderPosts}
           </div>
         </div>
       </>

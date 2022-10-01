@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import { URLtoBlob } from '../methods/ImageConverter';
 
 export default function CanvasPreview({ img, crop }) {
   const drawImage = async () => {
@@ -30,7 +29,7 @@ export default function CanvasPreview({ img, crop }) {
 
   
   useEffect(() => {
-    drawImage()
+    img && drawImage()
   }, [crop])
 
   return (

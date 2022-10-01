@@ -129,12 +129,12 @@ export default function Sell() {
 
     console.log(data);
 
-    // try {
-    //   const res = await axios.post('http://localhost:3001/post/create', data);
-    //   console.log(res.data);
-    // } catch (err) {
-    //   console.log(err);
-    // }
+    try {
+      const res = await axios.post('http://localhost:3001/post/create', data);
+      console.log(res.data);
+    } catch (err) {
+      console.log(err);
+    }
   }
 
   return (
